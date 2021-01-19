@@ -410,6 +410,6 @@ void RWindow::on_actionExit_triggered()
 // On Support Clicked --> Open Site
 void RWindow::on_actionSupport_triggered()
 {
-    QString link = "https://github.com/RRkundkar777/";
+    QString link = "https://github.com/RRkundkar777/RNote";
     QDesktopServices::openUrl(QUrl(link));
 }
