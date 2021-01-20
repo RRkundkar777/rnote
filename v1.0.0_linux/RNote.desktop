@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=RNote(v1.0.0)
+Comment=RNote_Desktop
+Exec=/media/rushikesh/MacOS/MTXOS/VisualStudioProjects/RNote/RNote/RNote
+Icon=/media/rushikesh/MacOS/MTXOS/VisualStudioProjects/RNote/RNote/Images/GNU.xpm
+Terminal=true
+Type=Application
+Categories=Development;
+StartupNotify=true
+NoDisplay=true
