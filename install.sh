@@ -6,5 +6,4 @@ cp ./Images/RNote.png $HOME/RNote/RNote.png
 sed -i "4i Exec=$HOME/RNote/RNote" $HOME/Desktop/RNote.desktop
 sed -i "5i Icon=$HOME/RNote/RNote.png" $HOME/Desktop/RNote.desktop 
 
-
 echo "RNote Installed Successfully"
