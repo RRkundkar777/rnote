@@ -1,8 +1,6 @@
 [Desktop Entry]
 Name=RNote(v1.0.0)
 Comment=RNote_Desktop
-Exec=/media/rushikesh/MacOS/MTXOS/VisualStudioProjects/RNote/RNote/v1.0.0_linux/RNote
-Icon=/media/rushikesh/MacOS/MTXOS/VisualStudioProjects/RNote/RNote/Images/RNote.png
 Terminal=true
 Type=Application
 Categories=Development;
