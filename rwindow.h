@@ -5,9 +5,6 @@
 
 using namespace std;
 
-// For using TabData
-#include"tabStack.h"
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class RWindow; }
 QT_END_NAMESPACE
@@ -39,8 +36,6 @@ private slots:
     void on_actionSave_As_triggered();
 
     void on_actionSupport_triggered();
-
-    void on_actionTestCode_triggered();
 
 private:
     Ui::RWindow *ui;
