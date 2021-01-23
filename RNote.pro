@@ -20,8 +20,7 @@ RC_ICONS = Images/GNU.ico
 SOURCES += \
     main.cpp \
     rwindow.cpp \
-    tab.cpp \
-    tabStack.cpp
+    tab.cpp
 
 HEADERS += \
     rwindow.h \

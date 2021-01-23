@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+using namespace std;
+
 // For using TabData
 #include"tabStack.h"
 
@@ -20,9 +22,6 @@ class RWindow : public QMainWindow
 public:
     RWindow(QWidget *parent = nullptr);
     ~RWindow();
-
-    // for dynamic strorage
-    slist *L1;
 
 private slots:
     void on_actionNew_triggered();
