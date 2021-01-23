@@ -413,3 +413,23 @@ void RWindow::on_actionSupport_triggered()
     QString link = "https://github.com/RRkundkar777/RNote";
     QDesktopServices::openUrl(QUrl(link));
 }
+
+void RWindow::on_actionTestCode_triggered()
+{
+    init(L1);
+//    sappend(L1,"Clang/P1");
+//    append(&L1,"Python/P1");
+//    append(&L1,"Java/J1");
+//    display(&L1);
+}
+
+
+
+
+
+
+
+
+
+
+
