@@ -59,6 +59,11 @@ RWindow::RWindow(QWidget *parent)
     // Incrementing the TabCount
     TabCount = 1;
 
+    // Selecting the Default theme --> setting the current action
+    QAction *act = ui->actionLight;
+    ui->menuTheme->setActiveAction(act);
+    ui->menuTheme->activeAction()->setChecked(true);
+
     // Debugging
     qDebug() << "Added a Plain Text Tab (TabCount to One)"<<"Window Title is "<<newWindowTitle;
 
@@ -413,6 +418,23 @@ void RWindow::on_actionSupport_triggered()
     QString link = "https://github.com/RRkundkar777/RNote";
     QDesktopServices::openUrl(QUrl(link));
 }
+
+// On dark option chosen --> Set the theme to dark
+void RWindow::on_actionDark_triggered()
+{
+    // Current Index
+    int index = ui->tabWidget_Note->currentIndex();
+
+    // Pointer to Tab Class
+    QWidget *widget = ui->tabWidget_Note->widget(index);
+
+    //Typecasting default QWidget Pointer to Tab Pointer
+    Tab* tabPtr = (Tab*) widget;
+
+    // Setting the dark theme
+    Tab::setDarkTheme(tabPtr);
+}
+
 
 
 

@@ -1,6 +1,9 @@
 #include "tab.h"
 #include "ui_tab.h"
 
+// For changing theme
+#include<QColorDialog>
+
 // For Debugging
 #include<QDebug>
 
@@ -36,4 +39,18 @@ void Tab::setPlainTextData(Tab *tab,QString plainText){
     return;
 }
 
+// Function to set dark theme on Plain Text Edit
+void Tab::setDarkTheme(Tab *tab){
+    // Getting the Colors
+    QColor backgroundColor = Qt::black;
+    QColor textColor = Qt::white;
 
+    // Creating a pallette
+    QPalette palette;
+    palette.setColor(QPalette::Base,backgroundColor);
+    palette.setColor(QPalette::Text,textColor);
+
+    // Setting the colors
+    if(backgroundColor.isValid() && textColor.isValid())
+        tab->ui->plainTextEdit->setPalette(palette);
+}

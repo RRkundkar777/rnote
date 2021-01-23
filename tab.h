@@ -21,6 +21,9 @@ public:
     // Function to set Text inside Plain Text Widget
     static void setPlainTextData(Tab*, QString);
 
+    // Function to set a dark theme to plain Text Widget
+    static void setDarkTheme(Tab*);
+
 private:
     Ui::Tab *ui;
 };
