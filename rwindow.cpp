@@ -465,7 +465,6 @@ void RWindow::on_actionCobalt_triggered()
 
     // Setting the theme
     tabPtr->setCobaltTheme();
-
 }
 
 void RWindow::on_actionFont_triggered()
