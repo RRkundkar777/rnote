@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'rwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.9.9
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -12,6 +12,8 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -34,10 +36,11 @@ public:
     QAction *actionAbout;
     QAction *actionSupport;
     QAction *actionSend_Feedback;
-    QAction *actionFont;
     QAction *actionTestCode;
     QAction *actionLight;
     QAction *actionDark;
+    QAction *actionFont;
+    QAction *actionCobalt;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget_Note;
@@ -53,40 +56,42 @@ public:
     void setupUi(QMainWindow *RWindow)
     {
         if (RWindow->objectName().isEmpty())
-            RWindow->setObjectName(QString::fromUtf8("RWindow"));
+            RWindow->setObjectName(QStringLiteral("RWindow"));
         RWindow->resize(1380, 700);
         actionNew = new QAction(RWindow);
-        actionNew->setObjectName(QString::fromUtf8("actionNew"));
+        actionNew->setObjectName(QStringLiteral("actionNew"));
         actionSave = new QAction(RWindow);
-        actionSave->setObjectName(QString::fromUtf8("actionSave"));
+        actionSave->setObjectName(QStringLiteral("actionSave"));
         actionOpen = new QAction(RWindow);
-        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
+        actionOpen->setObjectName(QStringLiteral("actionOpen"));
         actionExit = new QAction(RWindow);
-        actionExit->setObjectName(QString::fromUtf8("actionExit"));
+        actionExit->setObjectName(QStringLiteral("actionExit"));
         actionNew_Window = new QAction(RWindow);
-        actionNew_Window->setObjectName(QString::fromUtf8("actionNew_Window"));
+        actionNew_Window->setObjectName(QStringLiteral("actionNew_Window"));
         actionSave_As = new QAction(RWindow);
-        actionSave_As->setObjectName(QString::fromUtf8("actionSave_As"));
+        actionSave_As->setObjectName(QStringLiteral("actionSave_As"));
         actionAbout = new QAction(RWindow);
-        actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
+        actionAbout->setObjectName(QStringLiteral("actionAbout"));
         actionSupport = new QAction(RWindow);
-        actionSupport->setObjectName(QString::fromUtf8("actionSupport"));
+        actionSupport->setObjectName(QStringLiteral("actionSupport"));
         actionSend_Feedback = new QAction(RWindow);
-        actionSend_Feedback->setObjectName(QString::fromUtf8("actionSend_Feedback"));
-        actionFont = new QAction(RWindow);
-        actionFont->setObjectName(QString::fromUtf8("actionFont"));
+        actionSend_Feedback->setObjectName(QStringLiteral("actionSend_Feedback"));
         actionTestCode = new QAction(RWindow);
-        actionTestCode->setObjectName(QString::fromUtf8("actionTestCode"));
+        actionTestCode->setObjectName(QStringLiteral("actionTestCode"));
         actionLight = new QAction(RWindow);
-        actionLight->setObjectName(QString::fromUtf8("actionLight"));
+        actionLight->setObjectName(QStringLiteral("actionLight"));
         actionDark = new QAction(RWindow);
-        actionDark->setObjectName(QString::fromUtf8("actionDark"));
+        actionDark->setObjectName(QStringLiteral("actionDark"));
+        actionFont = new QAction(RWindow);
+        actionFont->setObjectName(QStringLiteral("actionFont"));
+        actionCobalt = new QAction(RWindow);
+        actionCobalt->setObjectName(QStringLiteral("actionCobalt"));
         centralwidget = new QWidget(RWindow);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setObjectName(QStringLiteral("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         tabWidget_Note = new QTabWidget(centralwidget);
-        tabWidget_Note->setObjectName(QString::fromUtf8("tabWidget_Note"));
+        tabWidget_Note->setObjectName(QStringLiteral("tabWidget_Note"));
         tabWidget_Note->setIconSize(QSize(16, 16));
         tabWidget_Note->setElideMode(Qt::ElideLeft);
         tabWidget_Note->setUsesScrollButtons(true);
@@ -95,29 +100,29 @@ public:
         tabWidget_Note->setMovable(true);
         tabWidget_Note->setTabBarAutoHide(false);
         RBaseTab = new QWidget();
-        RBaseTab->setObjectName(QString::fromUtf8("RBaseTab"));
+        RBaseTab->setObjectName(QStringLiteral("RBaseTab"));
         tabWidget_Note->addTab(RBaseTab, QString());
         RBaseTab2 = new QWidget();
-        RBaseTab2->setObjectName(QString::fromUtf8("RBaseTab2"));
+        RBaseTab2->setObjectName(QStringLiteral("RBaseTab2"));
         tabWidget_Note->addTab(RBaseTab2, QString());
 
         verticalLayout->addWidget(tabWidget_Note);
 
         RWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(RWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 1380, 26));
         menuFile = new QMenu(menubar);
-        menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        menuFile->setObjectName(QStringLiteral("menuFile"));
         menuHelp = new QMenu(menubar);
-        menuHelp->setObjectName(QString::fromUtf8("menuHelp"));
+        menuHelp->setObjectName(QStringLiteral("menuHelp"));
         menuEdit = new QMenu(menubar);
-        menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
+        menuEdit->setObjectName(QStringLiteral("menuEdit"));
         menuTheme = new QMenu(menuEdit);
-        menuTheme->setObjectName(QString::fromUtf8("menuTheme"));
+        menuTheme->setObjectName(QStringLiteral("menuTheme"));
         RWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(RWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        statusbar->setObjectName(QStringLiteral("statusbar"));
         RWindow->setStatusBar(statusbar);
 
         menubar->addAction(menuFile->menuAction());
@@ -138,6 +143,7 @@ public:
         menuEdit->addAction(menuTheme->menuAction());
         menuTheme->addAction(actionLight);
         menuTheme->addAction(actionDark);
+        menuTheme->addAction(actionCobalt);
 
         retranslateUi(RWindow);
 
@@ -149,41 +155,42 @@ public:
 
     void retranslateUi(QMainWindow *RWindow)
     {
-        RWindow->setWindowTitle(QApplication::translate("RWindow", "RWindow", nullptr));
-        actionNew->setText(QApplication::translate("RWindow", "New", nullptr));
+        RWindow->setWindowTitle(QApplication::translate("RWindow", "RWindow", Q_NULLPTR));
+        actionNew->setText(QApplication::translate("RWindow", "New", Q_NULLPTR));
 #ifndef QT_NO_SHORTCUT
-        actionNew->setShortcut(QApplication::translate("RWindow", "Ctrl+N", nullptr));
+        actionNew->setShortcut(QApplication::translate("RWindow", "Ctrl+N", Q_NULLPTR));
 #endif // QT_NO_SHORTCUT
-        actionSave->setText(QApplication::translate("RWindow", "Save", nullptr));
+        actionSave->setText(QApplication::translate("RWindow", "Save", Q_NULLPTR));
 #ifndef QT_NO_SHORTCUT
-        actionSave->setShortcut(QApplication::translate("RWindow", "Ctrl+S", nullptr));
+        actionSave->setShortcut(QApplication::translate("RWindow", "Ctrl+S", Q_NULLPTR));
 #endif // QT_NO_SHORTCUT
-        actionOpen->setText(QApplication::translate("RWindow", "Open", nullptr));
+        actionOpen->setText(QApplication::translate("RWindow", "Open", Q_NULLPTR));
 #ifndef QT_NO_SHORTCUT
-        actionOpen->setShortcut(QApplication::translate("RWindow", "Ctrl+O", nullptr));
+        actionOpen->setShortcut(QApplication::translate("RWindow", "Ctrl+O", Q_NULLPTR));
 #endif // QT_NO_SHORTCUT
-        actionExit->setText(QApplication::translate("RWindow", "Exit", nullptr));
-        actionNew_Window->setText(QApplication::translate("RWindow", "New Window", nullptr));
+        actionExit->setText(QApplication::translate("RWindow", "Exit", Q_NULLPTR));
+        actionNew_Window->setText(QApplication::translate("RWindow", "New Window", Q_NULLPTR));
 #ifndef QT_NO_SHORTCUT
-        actionNew_Window->setShortcut(QApplication::translate("RWindow", "Ctrl+Shift+N", nullptr));
+        actionNew_Window->setShortcut(QApplication::translate("RWindow", "Ctrl+Shift+N", Q_NULLPTR));
 #endif // QT_NO_SHORTCUT
-        actionSave_As->setText(QApplication::translate("RWindow", "Save As", nullptr));
+        actionSave_As->setText(QApplication::translate("RWindow", "Save As", Q_NULLPTR));
 #ifndef QT_NO_SHORTCUT
-        actionSave_As->setShortcut(QApplication::translate("RWindow", "Ctrl+Shift+S", nullptr));
+        actionSave_As->setShortcut(QApplication::translate("RWindow", "Ctrl+Shift+S", Q_NULLPTR));
 #endif // QT_NO_SHORTCUT
-        actionAbout->setText(QApplication::translate("RWindow", "About RNote", nullptr));
-        actionSupport->setText(QApplication::translate("RWindow", "Help and Support", nullptr));
-        actionSend_Feedback->setText(QApplication::translate("RWindow", "Send Feedback", nullptr));
-        actionFont->setText(QApplication::translate("RWindow", "Font", nullptr));
-        actionTestCode->setText(QApplication::translate("RWindow", "TestCode", nullptr));
-        actionLight->setText(QApplication::translate("RWindow", "Light", nullptr));
-        actionDark->setText(QApplication::translate("RWindow", "Dark", nullptr));
-        tabWidget_Note->setTabText(tabWidget_Note->indexOf(RBaseTab), QApplication::translate("RWindow", "New Page", nullptr));
-        tabWidget_Note->setTabText(tabWidget_Note->indexOf(RBaseTab2), QApplication::translate("RWindow", "New Page2", nullptr));
-        menuFile->setTitle(QApplication::translate("RWindow", "File", nullptr));
-        menuHelp->setTitle(QApplication::translate("RWindow", "Help", nullptr));
-        menuEdit->setTitle(QApplication::translate("RWindow", "Edit", nullptr));
-        menuTheme->setTitle(QApplication::translate("RWindow", "Theme", nullptr));
+        actionAbout->setText(QApplication::translate("RWindow", "About RNote", Q_NULLPTR));
+        actionSupport->setText(QApplication::translate("RWindow", "Help and Support", Q_NULLPTR));
+        actionSend_Feedback->setText(QApplication::translate("RWindow", "Send Feedback", Q_NULLPTR));
+        actionTestCode->setText(QApplication::translate("RWindow", "TestCode", Q_NULLPTR));
+        actionLight->setText(QApplication::translate("RWindow", "Theme Light", Q_NULLPTR));
+        actionDark->setText(QApplication::translate("RWindow", "Absolute Dark", Q_NULLPTR));
+        actionFont->setText(QApplication::translate("RWindow", "Font ...", Q_NULLPTR));
+        actionCobalt->setText(QApplication::translate("RWindow", "Cobalt", Q_NULLPTR));
+        tabWidget_Note->setTabText(tabWidget_Note->indexOf(RBaseTab), QApplication::translate("RWindow", "New Page", Q_NULLPTR));
+        tabWidget_Note->setTabText(tabWidget_Note->indexOf(RBaseTab2), QApplication::translate("RWindow", "New Page2", Q_NULLPTR));
+        menuFile->setTitle(QApplication::translate("RWindow", "File", Q_NULLPTR));
+        menuHelp->setTitle(QApplication::translate("RWindow", "Help", Q_NULLPTR));
+        menuEdit->setTitle(QApplication::translate("RWindow", "Edit", Q_NULLPTR));
+        menuTheme->setTitle(QApplication::translate("RWindow", "Editor Theme", Q_NULLPTR));
     } // retranslateUi
 
 };
