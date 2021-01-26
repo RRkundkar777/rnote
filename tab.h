@@ -22,7 +22,16 @@ public:
     static void setPlainTextData(Tab*, QString);
 
     // Function to set a dark theme to plain Text Widget
-    static void setDarkTheme(Tab*);
+    void setDarkTheme();
+
+    // Function to set a light theme to plain Text Widget
+    void setLightTheme();
+
+    // Function to set a Cobalt Theme
+    void setCobaltTheme();
+
+    // Function to set Font
+    void setPlainTextFont();
 
 private:
     Ui::Tab *ui;
