@@ -37,6 +37,12 @@ private slots:
 
     void on_actionDark_triggered();
 
+    void on_actionFont_triggered();
+
+    void on_actionLight_triggered();
+
+    void on_actionCobalt_triggered();
+
 private:
     Ui::RWindow *ui;
 

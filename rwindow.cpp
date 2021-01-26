@@ -419,7 +419,7 @@ void RWindow::on_actionSupport_triggered()
     QDesktopServices::openUrl(QUrl(link));
 }
 
-// On dark option chosen --> Set the theme to dark
+// On dark option chosen --> Set the editor theme to dark
 void RWindow::on_actionDark_triggered()
 {
     // Current Index
@@ -432,17 +432,53 @@ void RWindow::on_actionDark_triggered()
     Tab* tabPtr = (Tab*) widget;
 
     // Setting the dark theme
-    Tab::setDarkTheme(tabPtr);
+    tabPtr->setDarkTheme();
 }
 
+// On light option chosen --> Set the editor theme to light
+void RWindow::on_actionLight_triggered()
+{
+    // Current Index
+    int index = ui->tabWidget_Note->currentIndex();
 
+    // Pointer to Tab Class
+    QWidget *widget = ui->tabWidget_Note->widget(index);
 
+    //Typecasting default QWidget Pointer to Tab Pointer
+    Tab* tabPtr = (Tab*) widget;
 
+    // Setting the theme
+    tabPtr->setLightTheme();
+}
 
+// On cobalt option chosen --> Set the editor theme to cobalt
+void RWindow::on_actionCobalt_triggered()
+{
+    // Current Index
+    int index = ui->tabWidget_Note->currentIndex();
 
+    // Pointer to Tab Class
+    QWidget *widget = ui->tabWidget_Note->widget(index);
 
+    //Typecasting default QWidget Pointer to Tab Pointer
+    Tab* tabPtr = (Tab*) widget;
 
+    // Setting the theme
+    tabPtr->setCobaltTheme();
 
+}
 
+void RWindow::on_actionFont_triggered()
+{
+    // Current Index
+    int index = ui->tabWidget_Note->currentIndex();
 
+    // Pointer to Tab Class
+    QWidget *widget = ui->tabWidget_Note->widget(index);
 
+    //Typecasting default QWidget Pointer to Tab Pointer
+    Tab* tabPtr = (Tab*) widget;
+
+    // Setting the new Font
+    tabPtr->setPlainTextFont();
+}

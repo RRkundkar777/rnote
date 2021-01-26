@@ -94,10 +94,11 @@
     </property>
     <widget class="QMenu" name="menuTheme">
      <property name="title">
-      <string>Theme</string>
+      <string>Editor Theme</string>
      </property>
      <addaction name="actionLight"/>
      <addaction name="actionDark"/>
+     <addaction name="actionCobalt"/>
     </widget>
     <addaction name="actionFont"/>
     <addaction name="menuTheme"/>
@@ -167,11 +168,6 @@
     <string>Send Feedback</string>
    </property>
   </action>
-  <action name="actionFont">
-   <property name="text">
-    <string>Font</string>
-   </property>
-  </action>
   <action name="actionTestCode">
    <property name="text">
     <string>TestCode</string>
@@ -179,12 +175,22 @@
   </action>
   <action name="actionLight">
    <property name="text">
-    <string>Light</string>
+    <string>Theme Light</string>
    </property>
   </action>
   <action name="actionDark">
    <property name="text">
-    <string>Dark</string>
+    <string>Absolute Dark</string>
+   </property>
+  </action>
+  <action name="actionFont">
+   <property name="text">
+    <string>Font ...</string>
+   </property>
+  </action>
+  <action name="actionCobalt">
+   <property name="text">
+    <string>Cobalt</string>
    </property>
   </action>
  </widget>
