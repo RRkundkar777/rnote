@@ -40,7 +40,7 @@ public:
     QAction *actionLight;
     QAction *actionDark;
     QAction *actionFont;
-    QAction *actionCobalt;
+    QAction *actionMonokai;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget_Note;
@@ -84,8 +84,8 @@ public:
         actionDark->setObjectName(QStringLiteral("actionDark"));
         actionFont = new QAction(RWindow);
         actionFont->setObjectName(QStringLiteral("actionFont"));
-        actionCobalt = new QAction(RWindow);
-        actionCobalt->setObjectName(QStringLiteral("actionCobalt"));
+        actionMonokai = new QAction(RWindow);
+        actionMonokai->setObjectName(QStringLiteral("actionMonokai"));
         centralwidget = new QWidget(RWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -143,7 +143,7 @@ public:
         menuEdit->addAction(menuTheme->menuAction());
         menuTheme->addAction(actionLight);
         menuTheme->addAction(actionDark);
-        menuTheme->addAction(actionCobalt);
+        menuTheme->addAction(actionMonokai);
 
         retranslateUi(RWindow);
 
@@ -184,7 +184,7 @@ public:
         actionLight->setText(QApplication::translate("RWindow", "Theme Light", Q_NULLPTR));
         actionDark->setText(QApplication::translate("RWindow", "Absolute Dark", Q_NULLPTR));
         actionFont->setText(QApplication::translate("RWindow", "Font ...", Q_NULLPTR));
-        actionCobalt->setText(QApplication::translate("RWindow", "Cobalt", Q_NULLPTR));
+        actionMonokai->setText(QApplication::translate("RWindow", "Monokai", Q_NULLPTR));
         tabWidget_Note->setTabText(tabWidget_Note->indexOf(RBaseTab), QApplication::translate("RWindow", "New Page", Q_NULLPTR));
         tabWidget_Note->setTabText(tabWidget_Note->indexOf(RBaseTab2), QApplication::translate("RWindow", "New Page2", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("RWindow", "File", Q_NULLPTR));

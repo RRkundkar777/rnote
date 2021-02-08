@@ -41,7 +41,7 @@ private slots:
 
     void on_actionLight_triggered();
 
-    void on_actionCobalt_triggered();
+    void on_actionMonokai_triggered();
 
 private:
     Ui::RWindow *ui;

@@ -98,7 +98,7 @@
      </property>
      <addaction name="actionLight"/>
      <addaction name="actionDark"/>
-     <addaction name="actionCobalt"/>
+     <addaction name="actionMonokai"/>
     </widget>
     <addaction name="actionFont"/>
     <addaction name="menuTheme"/>
@@ -188,9 +188,9 @@
     <string>Font ...</string>
    </property>
   </action>
-  <action name="actionCobalt">
+  <action name="actionMonokai">
    <property name="text">
-    <string>Cobalt</string>
+    <string>Monokai</string>
    </property>
   </action>
  </widget>

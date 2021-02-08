@@ -28,7 +28,7 @@ public:
     void setLightTheme();
 
     // Function to set a Cobalt Theme
-    void setCobaltTheme();
+    void setMonokaiTheme();
 
     // Function to set Font
     void setPlainTextFont();

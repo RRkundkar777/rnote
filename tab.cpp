@@ -46,53 +46,20 @@ void Tab::setPlainTextData(Tab *tab,QString plainText){
 }
 
 // Function to set dark theme on Plain Text Edit
-void Tab::setDarkTheme(){
-    // Getting the Colors
-    QColor backgroundColor = Qt::black;
-    QColor textColor = Qt::white;
-
-    // Creating a pallette
-    QPalette palette;
-    palette.setColor(QPalette::Base,backgroundColor);
-    palette.setColor(QPalette::Text,textColor);
-
-    // Setting the colors
-    if(backgroundColor.isValid() && textColor.isValid())
-        this->ui->plainTextEdit->setPalette(palette);
+void Tab::setDarkTheme()
+{
+    ui->plainTextEdit->setStyleSheet("background-color: black;color: white;");
 }
 
 // Function to set light theme on Plain Text Edit
 void Tab::setLightTheme(){
-    // Getting the Colors
-    QColor backgroundColor = Qt::white;
-    QColor textColor = Qt::black;
-
-    // Creating a color palette
-    QPalette palette;
-    palette.setColor(QPalette::Base,backgroundColor);
-    palette.setColor(QPalette::Text,textColor);
-
-    // Setting the colors
-    if(backgroundColor.isValid() && textColor.isValid())
-        this->ui->plainTextEdit->setPalette(palette);
+    ui->plainTextEdit->setStyleSheet("background-color: #ffffff;color: black;");
 }
 
-// Function to set light theme on Plain Text Edit
-void Tab::setCobaltTheme(){
-    // Getting the Colors
-    QColor backgroundColor = QColor::fromHsv(215, 100, 67);
-    QColor textColor = QColor::fromRgb(255,255,0);
-
-    // Creating a color palette
-    QPalette palette;
-    palette.setColor(QPalette::Base,backgroundColor);
-    palette.setColor(QPalette::Text,textColor);
-
-    // Setting the colors
-    if(backgroundColor.isValid() && textColor.isValid())
-        this->ui->plainTextEdit->setPalette(palette);
+// Function to set monokai theme on Plain Text Edit
+void Tab::setMonokaiTheme(){
+    ui->plainTextEdit->setStyleSheet("background-color: #555555;color: #ffff00;border-color:#555555");
 }
-
 
 // Function to set a new Font to PlainTextEdit
 void Tab::setPlainTextFont()
@@ -114,8 +81,6 @@ void Tab::setPlainTextFont()
         qDebug() << "Nothing was Done";
     }
 }
-
-
 
 
 
