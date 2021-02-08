@@ -92,18 +92,20 @@
     <property name="title">
      <string>Edit</string>
     </property>
+    <widget class="QMenu" name="menuTheme">
+     <property name="title">
+      <string>Editor Theme</string>
+     </property>
+     <addaction name="actionLight"/>
+     <addaction name="actionDark"/>
+     <addaction name="actionMonokai"/>
+    </widget>
     <addaction name="actionFont"/>
-   </widget>
-   <widget class="QMenu" name="menuTest">
-    <property name="title">
-     <string>Test</string>
-    </property>
-    <addaction name="actionTestCode"/>
+    <addaction name="menuTheme"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuHelp"/>
-   <addaction name="menuTest"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNew">
@@ -166,14 +168,29 @@
     <string>Send Feedback</string>
    </property>
   </action>
-  <action name="actionFont">
-   <property name="text">
-    <string>Font</string>
-   </property>
-  </action>
   <action name="actionTestCode">
    <property name="text">
     <string>TestCode</string>
+   </property>
+  </action>
+  <action name="actionLight">
+   <property name="text">
+    <string>Theme Light</string>
+   </property>
+  </action>
+  <action name="actionDark">
+   <property name="text">
+    <string>Absolute Dark</string>
+   </property>
+  </action>
+  <action name="actionFont">
+   <property name="text">
+    <string>Font ...</string>
+   </property>
+  </action>
+  <action name="actionMonokai">
+   <property name="text">
+    <string>Monokai</string>
    </property>
   </action>
  </widget>

@@ -3,9 +3,6 @@
 
 #include <QMainWindow>
 
-// For using TabData
-#include"tabStack.h"
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class RWindow; }
 QT_END_NAMESPACE
@@ -20,9 +17,6 @@ class RWindow : public QMainWindow
 public:
     RWindow(QWidget *parent = nullptr);
     ~RWindow();
-
-    // for dynamic strorage
-    slist *L1;
 
 private slots:
     void on_actionNew_triggered();
@@ -41,7 +35,13 @@ private slots:
 
     void on_actionSupport_triggered();
 
-    void on_actionTestCode_triggered();
+    void on_actionDark_triggered();
+
+    void on_actionFont_triggered();
+
+    void on_actionLight_triggered();
+
+    void on_actionMonokai_triggered();
 
 private:
     Ui::RWindow *ui;
