@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>RNote</DisplayName>
+    <Description>This will install RNote on your PC</Description>
+    <Version>1.0.1</Version>
+    <ReleaseDate>2021-02-10</ReleaseDate>
+    <Licenses>
+            <License name="End User License Agreement" file="license.txt" />
+    </Licenses>
+    <Default>true</Default>
+</Package>
