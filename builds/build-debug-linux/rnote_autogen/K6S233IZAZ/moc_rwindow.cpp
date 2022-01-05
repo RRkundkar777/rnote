@@ -34,29 +34,28 @@ static const qt_meta_stringdata_RWindow_t qt_meta_stringdata_RWindow = {
 QT_MOC_LITERAL(0, 0, 7), // "RWindow"
 QT_MOC_LITERAL(1, 8, 22), // "on_actionNew_triggered"
 QT_MOC_LITERAL(2, 31, 0), // ""
-QT_MOC_LITERAL(3, 32, 35), // "on_tabWidget_Note_tabCloseReq..."
-QT_MOC_LITERAL(4, 68, 5), // "index"
-QT_MOC_LITERAL(5, 74, 23), // "on_actionSave_triggered"
-QT_MOC_LITERAL(6, 98, 23), // "on_actionOpen_triggered"
-QT_MOC_LITERAL(7, 122, 31), // "on_tabWidget_Note_tabBarClicked"
-QT_MOC_LITERAL(8, 154, 23), // "on_actionExit_triggered"
-QT_MOC_LITERAL(9, 178, 26), // "on_actionSave_As_triggered"
-QT_MOC_LITERAL(10, 205, 26), // "on_actionSupport_triggered"
-QT_MOC_LITERAL(11, 232, 23), // "on_actionDark_triggered"
-QT_MOC_LITERAL(12, 256, 23), // "on_actionFont_triggered"
+QT_MOC_LITERAL(3, 32, 23), // "on_actionOpen_triggered"
+QT_MOC_LITERAL(4, 56, 23), // "on_actionSave_triggered"
+QT_MOC_LITERAL(5, 80, 26), // "on_actionSave_As_triggered"
+QT_MOC_LITERAL(6, 107, 23), // "on_actionExit_triggered"
+QT_MOC_LITERAL(7, 131, 26), // "on_actionSupport_triggered"
+QT_MOC_LITERAL(8, 158, 35), // "on_tabWidget_Note_tabCloseReq..."
+QT_MOC_LITERAL(9, 194, 5), // "index"
+QT_MOC_LITERAL(10, 200, 31), // "on_tabWidget_Note_tabBarClicked"
+QT_MOC_LITERAL(11, 232, 23), // "on_actionFont_triggered"
+QT_MOC_LITERAL(12, 256, 23), // "on_actionDark_triggered"
 QT_MOC_LITERAL(13, 280, 24), // "on_actionLight_triggered"
 QT_MOC_LITERAL(14, 305, 26) // "on_actionMonokai_triggered"
 
     },
     "RWindow\0on_actionNew_triggered\0\0"
-    "on_tabWidget_Note_tabCloseRequested\0"
-    "index\0on_actionSave_triggered\0"
-    "on_actionOpen_triggered\0"
-    "on_tabWidget_Note_tabBarClicked\0"
-    "on_actionExit_triggered\0"
+    "on_actionOpen_triggered\0on_actionSave_triggered\0"
     "on_actionSave_As_triggered\0"
+    "on_actionExit_triggered\0"
     "on_actionSupport_triggered\0"
-    "on_actionDark_triggered\0on_actionFont_triggered\0"
+    "on_tabWidget_Note_tabCloseRequested\0"
+    "index\0on_tabWidget_Note_tabBarClicked\0"
+    "on_actionFont_triggered\0on_actionDark_triggered\0"
     "on_actionLight_triggered\0"
     "on_actionMonokai_triggered"
 };
@@ -77,13 +76,13 @@ static const uint qt_meta_data_RWindow[] = {
 
  // slots: name, argc, parameters, tag, flags
        1,    0,   74,    2, 0x08 /* Private */,
-       3,    1,   75,    2, 0x08 /* Private */,
-       5,    0,   78,    2, 0x08 /* Private */,
-       6,    0,   79,    2, 0x08 /* Private */,
-       7,    1,   80,    2, 0x08 /* Private */,
-       8,    0,   83,    2, 0x08 /* Private */,
-       9,    0,   84,    2, 0x08 /* Private */,
-      10,    0,   85,    2, 0x08 /* Private */,
+       3,    0,   75,    2, 0x08 /* Private */,
+       4,    0,   76,    2, 0x08 /* Private */,
+       5,    0,   77,    2, 0x08 /* Private */,
+       6,    0,   78,    2, 0x08 /* Private */,
+       7,    0,   79,    2, 0x08 /* Private */,
+       8,    1,   80,    2, 0x08 /* Private */,
+      10,    1,   83,    2, 0x08 /* Private */,
       11,    0,   86,    2, 0x08 /* Private */,
       12,    0,   87,    2, 0x08 /* Private */,
       13,    0,   88,    2, 0x08 /* Private */,
@@ -91,13 +90,13 @@ static const uint qt_meta_data_RWindow[] = {
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    4,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    4,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    9,
+    QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -113,15 +112,15 @@ void RWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_actionNew_triggered(); break;
-        case 1: _t->on_tabWidget_Note_tabCloseRequested((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 1: _t->on_actionOpen_triggered(); break;
         case 2: _t->on_actionSave_triggered(); break;
-        case 3: _t->on_actionOpen_triggered(); break;
-        case 4: _t->on_tabWidget_Note_tabBarClicked((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->on_actionExit_triggered(); break;
-        case 6: _t->on_actionSave_As_triggered(); break;
-        case 7: _t->on_actionSupport_triggered(); break;
-        case 8: _t->on_actionDark_triggered(); break;
-        case 9: _t->on_actionFont_triggered(); break;
+        case 3: _t->on_actionSave_As_triggered(); break;
+        case 4: _t->on_actionExit_triggered(); break;
+        case 5: _t->on_actionSupport_triggered(); break;
+        case 6: _t->on_tabWidget_Note_tabCloseRequested((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->on_tabWidget_Note_tabBarClicked((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->on_actionFont_triggered(); break;
+        case 9: _t->on_actionDark_triggered(); break;
         case 10: _t->on_actionLight_triggered(); break;
         case 11: _t->on_actionMonokai_triggered(); break;
         default: ;

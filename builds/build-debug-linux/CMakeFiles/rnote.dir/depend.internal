@@ -225,6 +225,7 @@ CMakeFiles/rnote.dir/src/main.cpp.o
  /home/rushikesh/Qt/5.9.9/gcc_64/include/QtWidgets/qwidget.h
  /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/main.cpp
 CMakeFiles/rnote.dir/src/rwindow.cpp.o
+ ../../headers/config.h
  ../../headers/rwindow.h
  ../../headers/tab.h
  /home/rushikesh/Qt/5.9.9/gcc_64/include/QtCore/QDebug

@@ -1,4 +1,4 @@
-// Main file Executable
+// Starting Point of application
 
 // RWindow Class
 #include "rwindow.h"
@@ -6,11 +6,10 @@
 // QApplication for Running App
 #include <QApplication>
 
-
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    RWindow window;
-    window.show();
-    return app.exec();
+    QApplication rnote_qt(argc, argv);
+    RWindow mainwindow;
+    mainwindow.show();
+    return rnote_qt.exec();
 }

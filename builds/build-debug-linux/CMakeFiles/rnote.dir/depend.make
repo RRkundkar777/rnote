@@ -224,6 +224,7 @@ CMakeFiles/rnote.dir/src/main.cpp.o: /home/rushikesh/Qt/5.9.9/gcc_64/include/QtW
 CMakeFiles/rnote.dir/src/main.cpp.o: /home/rushikesh/Qt/5.9.9/gcc_64/include/QtWidgets/qwidget.h
 CMakeFiles/rnote.dir/src/main.cpp.o: ../../src/main.cpp
 
+CMakeFiles/rnote.dir/src/rwindow.cpp.o: ../../headers/config.h
 CMakeFiles/rnote.dir/src/rwindow.cpp.o: ../../headers/rwindow.h
 CMakeFiles/rnote.dir/src/rwindow.cpp.o: ../../headers/tab.h
 CMakeFiles/rnote.dir/src/rwindow.cpp.o: /home/rushikesh/Qt/5.9.9/gcc_64/include/QtCore/QDebug

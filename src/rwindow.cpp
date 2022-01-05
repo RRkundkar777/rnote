@@ -1,37 +1,24 @@
-// RWindow Class
-#include "rwindow.h"
-
-// UI of RWindow
-#include "ui_rwindow.h"
-
-// For Debugging
+// Qt System Libraries
 #include<QDebug>
-
-// For using editor functionality
-#include"tab.h"
-
-// For Using Save Prompt Functionality
 #include<QMessageBox>
-
-// For Processing Strings
 #include<QString>
-
-// For Opening File Dialog Box
 #include<QFileDialog>
-
-// For Getting Plain Text Data
 #include<QPlainTextEdit>
-
-// For Opening Websites
 #include<QUrl>
 #include<QDesktopServices>
+
+// RWindow and Tab Class
+#include "rwindow.h"
+#include "ui_rwindow.h"
+#include"tab.h"
+#include"config.h"
 
 // Aliasing for maintaining the semantics
 #define SavePlainTextFile() on_actionSave_triggered()
 #define OpenNewTab() on_actionNew_triggered()
 #define SaveAs() on_actionSave_As_triggered()
 
-// Member Functions of RWindow Class
+// ------------------------------- Member Functions of RWindow Class -------------------------------------//
 
 // Constructor of RWindow
 RWindow::RWindow(QWidget *parent)
@@ -39,12 +26,12 @@ RWindow::RWindow(QWidget *parent)
     , ui(new Ui::RWindow)
 {
     ui->setupUi(this);
-    qDebug() << "RWindow Constructor Called";
+    rdebug("RWindow Constructor Called",RN_DBG,__FILE__);
 
     // Removal of Extra Tabs Supplied by Qt
     ui->tabWidget_Note->removeTab(0);
     ui->tabWidget_Note->removeTab(0);
-    qDebug() << "Removed Default Extra Tabs";
+    rdebug("Removed Default Extra Tabs",RN_DBG,__FILE__);
 
     // Adding a Plain Text Editor Tab
     ui->tabWidget_Note->addTab(new Tab(),QString("New Page %0").arg(ui->tabWidget_Note->count()+1));
@@ -64,8 +51,11 @@ RWindow::RWindow(QWidget *parent)
     ui->menuTheme->setActiveAction(act);
     ui->menuTheme->activeAction()->setChecked(true);
 
+
     // Debugging
-    qDebug() << "Added a Plain Text Tab (TabCount to One)"<<"Window Title is "<<newWindowTitle;
+    QString plainTextAdded = QString("Added a Plain Text Tab (TabCount to One) Window Title is "
+                                     + newWindowTitle);
+    rdebug(plainTextAdded,RN_DBG,__FILE__);
 
 }
 
@@ -73,11 +63,11 @@ RWindow::RWindow(QWidget *parent)
 RWindow::~RWindow()
 {
     delete ui;
-    qDebug() << "Exited Main Window";
+    rdebug("Exited Main Window",RN_DBG,__FILE__);
 }
 
 
-// On New Clicked Open a New Tab
+// On New --> Create a new tab
 void RWindow::on_actionNew_triggered()
 {
     // Index and Tab Title
@@ -87,8 +77,10 @@ void RWindow::on_actionNew_triggered()
     // Incrementing the TabCount and Setting the NewIndex
     TabCount++;
     int newIndex = TabCount;
-    qDebug()<<"TabCount Incremented";
-    qDebug() << "NewIndex is "<<newIndex;
+
+    rdebug("TabCount Incremented",RN_DBG,__FILE__);
+    QString debugInfo = QString("NewIndex is ") + QString(newIndex);
+    rdebug(debugInfo,RN_DBG,__FILE__);
 
     // Creating a New Tab and Setting the Current Index
     Tab *tab = new Tab();
@@ -96,12 +88,13 @@ void RWindow::on_actionNew_triggered()
     ui->tabWidget_Note->setCurrentIndex(newIndex);
 
     // Debugging
-    qDebug() << "New Tab Created by User";
-    qDebug()<< "Current Tab Number is "<<ui->tabWidget_Note->currentIndex();
+    rdebug("New Tab Created by User",RN_DBG,__FILE__);
+    debugInfo = QString("Current Tab Number is ") + QString(ui->tabWidget_Note->currentIndex());
+    rdebug(debugInfo,RN_DBG,__FILE__);
 }
 
 
-// On Open Clicked --> Open a file
+// On Open --> Open a file
 void RWindow::on_actionOpen_triggered()
 {
     // Opening a New Tab
