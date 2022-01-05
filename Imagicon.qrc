@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/Img">
-        <file>Images/RNote.ico</file>
-        <file>Images/GNU.ico</file>
-    </qresource>
-</RCC>
