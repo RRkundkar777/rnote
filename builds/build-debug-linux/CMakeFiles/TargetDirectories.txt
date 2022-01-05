@@ -1,0 +1,4 @@
+/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles/rebuild_cache.dir
+/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles/edit_cache.dir
+/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles/rnote.dir
+/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles/rnote_autogen.dir
