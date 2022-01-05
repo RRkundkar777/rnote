@@ -146,7 +146,7 @@ public:
 
         retranslateUi(RWindow);
 
-        tabWidget_Note->setCurrentIndex(0);
+        tabWidget_Note->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(RWindow);
