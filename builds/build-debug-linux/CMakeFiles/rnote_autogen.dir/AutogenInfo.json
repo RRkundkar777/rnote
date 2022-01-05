@@ -8,6 +8,16 @@
 	"HEADERS" : 
 	[
 		[
+			"/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/headers/config.h",
+			"MU",
+			"K6S233IZAZ/moc_config.cpp"
+		],
+		[
+			"/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/headers/keydown.h",
+			"MU",
+			"K6S233IZAZ/moc_keydown.cpp"
+		],
+		[
 			"/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/headers/rwindow.h",
 			"MU",
 			"K6S233IZAZ/moc_rwindow.cpp"
@@ -73,6 +83,10 @@
 	"SETTINGS_FILE" : "/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles/rnote_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/keydown.cpp",
+			"MU"
+		],
 		[
 			"/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/main.cpp",
 			"MU"

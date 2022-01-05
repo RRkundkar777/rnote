@@ -10,13 +10,13 @@
 // RWindow and Tab Class
 #include "rwindow.h"
 #include "ui_rwindow.h"
+#include "config.h"
 #include"tab.h"
-#include"config.h"
 
 // Aliasing for maintaining the semantics
 #define SavePlainTextFile() on_actionSave_triggered()
 #define OpenNewTab() on_actionNew_triggered()
-#define SaveAs() on_actionSave_As_triggered()
+#define SaveAsF() on_actionSave_As_triggered()
 
 // ------------------------------- Member Functions of RWindow Class -------------------------------------//
 
@@ -34,7 +34,7 @@ RWindow::RWindow(QWidget *parent)
     rdebug("Removed Default Extra Tabs",RN_DBG,__FILE__);
 
     // Adding a Plain Text Editor Tab
-    ui->tabWidget_Note->addTab(new Tab(),QString("New Page %0").arg(ui->tabWidget_Note->count()+1));
+    ui->tabWidget_Note->addTab(new Tab(),QString("Untitled %0").arg(ui->tabWidget_Note->count()+1));
     int index = ui->tabWidget_Note->currentIndex();
     ui->tabWidget_Note->setCurrentIndex(ui->tabWidget_Note->count()-1);
 
@@ -45,6 +45,8 @@ RWindow::RWindow(QWidget *parent)
 
     // Incrementing the TabCount
     TabCount = 1;
+
+//    qDebug() << "Current Index is: " << ui->tabWidget_Note->currentIndex();
 
     // Selecting the Default theme --> setting the current action
     QAction *act = ui->actionLight;
@@ -71,12 +73,12 @@ RWindow::~RWindow()
 void RWindow::on_actionNew_triggered()
 {
     // Index and Tab Title
-    int index = ui->tabWidget_Note->currentIndex();
-    QString tabtext = ui->tabWidget_Note->tabText(index);
+//    int index = ui->tabWidget_Note->currentIndex();
+//    QString tabtext = ui->tabWidget_Note->tabText(index);
 
     // Incrementing the TabCount and Setting the NewIndex
     TabCount++;
-    int newIndex = TabCount;
+    int newIndex = TabCount - 1;
 
     rdebug("TabCount Incremented",RN_DBG,__FILE__);
     QString debugInfo = QString("NewIndex is ") + QString(newIndex);
@@ -84,7 +86,7 @@ void RWindow::on_actionNew_triggered()
 
     // Creating a New Tab and Setting the Current Index
     Tab *tab = new Tab();
-    ui->tabWidget_Note->addTab(tab,QString("New Page %0").arg(newIndex));
+    ui->tabWidget_Note->addTab(tab,QString("Untitled %0").arg(TabCount));
     ui->tabWidget_Note->setCurrentIndex(newIndex);
 
     // Debugging
@@ -97,32 +99,24 @@ void RWindow::on_actionNew_triggered()
 // On Open --> Open a file
 void RWindow::on_actionOpen_triggered()
 {
-    // Opening a New Tab
+    // Creating a New Tab and setting it as current tab
     ui->tabWidget_Note->addTab(new Tab(),"Open Tab");
-
-    // Incrementing the Tab Count and Setting current index
     TabCount++;
-    ui->tabWidget_Note->setCurrentIndex(TabCount-1);
-
-    // Index of Current Tab
+    ui->tabWidget_Note->setCurrentIndex(TabCount - 1);
     int index = ui->tabWidget_Note->currentIndex();
 
-    // Opening a file Open prompt
-    // And saving file location as a string in file_dir
+    // Create a file object, and open it
     QString file_dir = QFileDialog::getOpenFileName(this,"Open ",QDir::homePath());
-
-    // Creating a file Object using the file location
     QFile OpenFile(file_dir);
-
-    // Opening the file
     bool fileOpened = OpenFile.open(QFile::ReadOnly | QFile::Text);
 
     // If file does not exists --> return the FileNotFound Error
     if(!fileOpened)
     {
         ui->tabWidget_Note->removeTab(index);
-        QMessageBox::warning(this,"Error 404","File Not Found");
-        qDebug() << "No File Selected";
+        TabCount--;
+//        QMessageBox::warning(this,"Error 404","File Not Found");
+        rdebug("No File Selected",RN_DBG,__FILE__);
         return;
     }
 
@@ -131,21 +125,19 @@ void RWindow::on_actionOpen_triggered()
 
         // Pointer to Tab Class
         QWidget *widget = ui->tabWidget_Note->widget(index);
-
-        //Typecasting default QWidget Pointer to Tab Pointer
         Tab* tabPtr = (Tab*) widget;
 
         // Getting the File contents in form of a String
         QString text;
         text = OpenFile.readAll();
 
-        // Calling the User-Defined function setPlainTextData to output the file content to plainText
+        // Disply contents of the file
         Tab::setPlainTextData(tabPtr,text);
 
-        // Closing the file
+        // Close the file
         OpenFile.close();
 
-        // Setting the Path inside tabStack
+        // Cache the Path inside tabStack
         int pathCount = 0;
         while(1)
         {
@@ -157,28 +149,27 @@ void RWindow::on_actionOpen_triggered()
             pathCount++;
         }
 
-        // Setting the TabName with the name of file
+        // Setting file name as Tab name
         QString newTabName = file_dir.split("/").back();
-
-        // If User Cancels Operation from the Open Prompt then filename will be NULL
         if(newTabName != ""){
             // Setting newTabName and newWindowTitle
             ui->tabWidget_Note->setTabText(index,newTabName);
             QString newWindowTitle = newTabName + " - RNote";
             this->setWindowTitle(newWindowTitle);
 
-            //Debugging
-            qDebug()<<"WindowTitle is "<<newWindowTitle;
+            // Debugging
+            QString debugInfo = QString("WindowTitle is " + newWindowTitle);
+            rdebug(debugInfo,RN_DBG,__FILE__);
         }
 
         // Debugging
-        qDebug()<<"Opened file named "<<newTabName;
+        QString debugInfo = QString("Opened file named " + newTabName);
+        rdebug(debugInfo,RN_DBG,__FILE__);
         return;
     }
 }
 
-
-// On Save Clicked --> Save the file
+// On Save --> Save the file
 void RWindow::on_actionSave_triggered()
 {
     // Index of Current Tab and Current Tab Name
@@ -202,33 +193,11 @@ void RWindow::on_actionSave_triggered()
         i++;
     }
 
-    // If file Exists then directly save it without prompt
+    // If file exists --> save it without prompt
     if(FilePathExists)
     {
-        // Opening a SavaFile
-        QFile SaveFile(filePath);
-
-        // Output object
-        QTextStream outputTo(&SaveFile);
-
-        // Opening the file
-        SaveFile.open(QFile::WriteOnly | QFile::Text);
-
-        // Pointer to Tab Class
-        QWidget *widget = ui->tabWidget_Note->widget(index);
-
-        //Typecasting default QWidget Pointer to Tab Pointer
-        Tab* tabPtr = (Tab*) widget;
-
-        // Calling the User-Defined function getPlainTextData and storing it in string
-        QString text = Tab::getPlainTextData(tabPtr);
-
-        // Outputting the string to file object
-        outputTo << text;
-
-        // Flushing and Closing the file
-        SaveFile.flush();
-        SaveFile.close();
+        // Write Data to the file
+        WriteFile(filePath);
 
         // Showing the Save Prompt
         QMessageBox::information(this,"Save","File Saved");
@@ -237,43 +206,20 @@ void RWindow::on_actionSave_triggered()
     // Else Open a Save Prompt and Save the File
     else{
         // Saving the File using Save File Prompt
-        SaveAs();
+        SaveAsF();
     }
 }
 
-
-// On Save As clicked --> Open a save prompt and Save the file
+// On Save As --> Open a save prompt and Save the file
 void RWindow::on_actionSave_As_triggered()
 {
     // Opening a file Save prompt
     // And saving file location as a string
     QString file_dir = QFileDialog::getSaveFileName(this,"Save As",QDir::homePath());
-
-    // Creating a file Object using the file location
-    QFile SaveFile(file_dir);
-
-    // Using QTextStream to Save Text to file
-    QTextStream outputTo(&SaveFile);
-
-    // Opening the file
-    SaveFile.open(QFile::WriteOnly | QFile::Text);
-
-    // Pointer to Tab Class
     int index = ui->tabWidget_Note->currentIndex();
-    QWidget *widget = ui->tabWidget_Note->widget(index);
 
-    //Typecasting default QWidget Pointer to Tab Pointer
-    Tab* tabPtr = (Tab*) widget;
-
-    // Calling the User-Defined function getPlainTextData and storing it in string
-    QString text = Tab::getPlainTextData(tabPtr);
-
-    // Outputting the string to file object
-    outputTo << text;
-
-    // Flushing and Closing the file
-    SaveFile.flush();
-    SaveFile.close();
+    // Write file to a location
+    WriteFile(file_dir);
 
     // Setting the Path inside tabStack
     int tabCount = 0;
@@ -287,10 +233,8 @@ void RWindow::on_actionSave_As_triggered()
         tabCount++;
     }
 
-    // Setting the TabName with the name of file
+    // Set the Tab name from filename
     QString newTabName = file_dir.split("/").back();
-
-    // If User Cancels Operation from the Save Prompt then filename will be NULL
     if(newTabName != ""){
         // Setting TabText and Window Title
         ui->tabWidget_Note->setTabText(index,newTabName);
@@ -299,11 +243,12 @@ void RWindow::on_actionSave_As_triggered()
         this->setWindowTitle(newWindowTitle);
 
         // Debugging
-        qDebug()<<"WindowTitle is "<<newWindowTitle;
+        QString debugInfo = QString("WindowTitle is " + newWindowTitle);
+        rdebug(debugInfo,RN_DBG,__FILE__);
     }
 }
 
-// On Tab Exit Clicked --> Prompt a Save Prompt
+// On Tab Exit --> Prompt a Save Prompt
 void RWindow::on_tabWidget_Note_tabCloseRequested(int index)
 {
     // The Close Tab Prompt
@@ -363,11 +308,11 @@ void RWindow::on_tabWidget_Note_tabCloseRequested(int index)
     }
 
     // Debugging
-    qDebug() << "Action is ";
+    rdebug("Action is ",RN_DBG,__FILE__);
 }
 
 
-// If any tab is clicked --> show the file name in Title Bar
+// On Tab Clicked --> show the file name in Title Bar
 void RWindow::on_tabWidget_Note_tabBarClicked(int index)
 {
     // Setting the New Window Title
@@ -401,7 +346,8 @@ void RWindow::on_actionExit_triggered()
        int reply;
        reply = exitPrompt.exec();
 
-       qDebug()<<"OnExitCode: "<<reply;
+       // Debugging
+       rdebug(QString("OnExitCode: ") + QString(reply),RN_DBG,__FILE__);
 }
 
 
@@ -411,6 +357,8 @@ void RWindow::on_actionSupport_triggered()
     QString link = "https://github.com/RRkundkar777/RNote";
     QDesktopServices::openUrl(QUrl(link));
 }
+
+//--------------------------------------- Editor Apperance --------------------------------------------//
 
 // On dark option chosen --> Set the editor theme to dark
 void RWindow::on_actionDark_triggered()
@@ -497,4 +445,34 @@ void RWindow::on_actionFont_triggered()
 
     // Setting the new Font
     tabPtr->setPlainTextFont();
+}
+
+// -------------------------------------- File I.O -----------------------------------------//
+void RWindow::WriteFile(QString fileLocation)
+{
+        // Creating a file Object using the file location
+        QFile SaveFile(fileLocation);
+
+        // Using QTextStream to Save Text to file
+        QTextStream outputTo(&SaveFile);
+
+        // Opening the file
+        SaveFile.open(QFile::WriteOnly | QFile::Text);
+
+        // Pointer to Tab Class
+        int index = ui->tabWidget_Note->currentIndex();
+        QWidget *widget = ui->tabWidget_Note->widget(index);
+
+        //Typecasting default QWidget Pointer to Tab Pointer
+        Tab* tabPtr = (Tab*) widget;
+
+        // Calling the User-Defined function getPlainTextData and storing it in string
+        QString text = Tab::getPlainTextData(tabPtr);
+
+        // Outputting the string to file object
+        outputTo << text;
+
+        // Flushing and Closing the file
+        SaveFile.flush();
+        SaveFile.close();
 }

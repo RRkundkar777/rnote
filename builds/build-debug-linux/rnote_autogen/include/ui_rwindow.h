@@ -111,7 +111,7 @@ public:
         RWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(RWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1380, 26));
+        menubar->setGeometry(QRect(0, 0, 1380, 24));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuHelp = new QMenu(menubar);
@@ -129,7 +129,6 @@ public:
         menubar->addAction(menuEdit->menuAction());
         menubar->addAction(menuHelp->menuAction());
         menuFile->addAction(actionNew);
-        menuFile->addAction(actionNew_Window);
         menuFile->addAction(actionOpen);
         menuFile->addAction(actionSave);
         menuFile->addAction(actionSave_As);
@@ -156,7 +155,7 @@ public:
     void retranslateUi(QMainWindow *RWindow)
     {
         RWindow->setWindowTitle(QApplication::translate("RWindow", "RWindow", Q_NULLPTR));
-        actionNew->setText(QApplication::translate("RWindow", "New", Q_NULLPTR));
+        actionNew->setText(QApplication::translate("RWindow", "New Tab", Q_NULLPTR));
 #ifndef QT_NO_SHORTCUT
         actionNew->setShortcut(QApplication::translate("RWindow", "Ctrl+N", Q_NULLPTR));
 #endif // QT_NO_SHORTCUT

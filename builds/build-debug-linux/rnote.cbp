@@ -133,10 +133,19 @@
 		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/forms/tab.ui">
 			<Option target="rnote"/>
 		</Unit>
+		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/headers/config.h">
+			<Option target="rnote"/>
+		</Unit>
+		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/headers/keydown.h">
+			<Option target="rnote"/>
+		</Unit>
 		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/headers/rwindow.h">
 			<Option target="rnote"/>
 		</Unit>
 		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/headers/tab.h">
+			<Option target="rnote"/>
+		</Unit>
+		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/keydown.cpp">
 			<Option target="rnote"/>
 		</Unit>
 		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/main.cpp">

@@ -163,6 +163,33 @@ rnote_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/rnote.dir/build.make CMakeFiles/rnote.dir/rnote_autogen/mocs_compilation.cpp.s
 .PHONY : rnote_autogen/mocs_compilation.cpp.s
 
+src/keydown.o: src/keydown.cpp.o
+
+.PHONY : src/keydown.o
+
+# target to build an object file
+src/keydown.cpp.o:
+	$(MAKE) -f CMakeFiles/rnote.dir/build.make CMakeFiles/rnote.dir/src/keydown.cpp.o
+.PHONY : src/keydown.cpp.o
+
+src/keydown.i: src/keydown.cpp.i
+
+.PHONY : src/keydown.i
+
+# target to preprocess a source file
+src/keydown.cpp.i:
+	$(MAKE) -f CMakeFiles/rnote.dir/build.make CMakeFiles/rnote.dir/src/keydown.cpp.i
+.PHONY : src/keydown.cpp.i
+
+src/keydown.s: src/keydown.cpp.s
+
+.PHONY : src/keydown.s
+
+# target to generate assembly for a file
+src/keydown.cpp.s:
+	$(MAKE) -f CMakeFiles/rnote.dir/build.make CMakeFiles/rnote.dir/src/keydown.cpp.s
+.PHONY : src/keydown.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -257,6 +284,9 @@ help:
 	@echo "... rnote_autogen/mocs_compilation.o"
 	@echo "... rnote_autogen/mocs_compilation.i"
 	@echo "... rnote_autogen/mocs_compilation.s"
+	@echo "... src/keydown.o"
+	@echo "... src/keydown.i"
+	@echo "... src/keydown.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

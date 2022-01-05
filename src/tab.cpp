@@ -1,24 +1,23 @@
+// Qt System Libraries
+#include<QColorDialog>
+#include<QFontDialog>
+
+// Tab Class
 #include "tab.h"
 #include "ui_tab.h"
 
-// For changing theme
-#include<QColorDialog>
+// Declaring rdebug() and RN_DBG
+void rdebug(QString,bool,QString);
+#define RN_DBG true
 
-// For Debugging
-#include<QDebug>
-
-// For Opening Font Dialog Box
-#include<QFontDialog>
-
-// Member Functions
-
-// Constructor of Tab Widget Class
+// ------------------------------- Member Functions of RWindow Class -------------------------------------//
+// Constructor of Tab
 Tab::Tab(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Tab)
 {
     ui->setupUi(this);
-    qDebug() << "Plain Text Constructor Called";
+    rdebug("Plain text constructor called",RN_DBG,__FILE__);
 
     // Adding a default Font Type to PlainTextEdit
     QFont defaultFont("Helvetica [Cronyx]", 12);
@@ -29,17 +28,16 @@ Tab::Tab(QWidget *parent) :
 Tab::~Tab()
 {
     delete ui;
-    qDebug() << "Plain Text Destructor Called";
+    rdebug("Plain text destructor called",RN_DBG,__FILE__);
 }
 
-// Function to get Text from PlainText Widget and Storing it in QString "text"
-// returns the plaintextdata as string
+// Get Plain Text Data
 QString Tab::getPlainTextData(Tab *tab){
     QString text = tab->ui->plainTextEdit->toPlainText();
     return text;
 }
 
-// Function to set a plain text inside a plainTextEdit widget
+// Set Plain Text Data
 void Tab::setPlainTextData(Tab *tab,QString plainText){
     tab->ui->plainTextEdit->setPlainText(plainText);
     return;
@@ -73,11 +71,12 @@ void Tab::setPlainTextFont()
     if(ok)
     {
         this->ui->plainTextEdit->setFont(font);
-        qDebug()<< "User Set Font" << font.family();
+        QString debugInfo = "User Set Font: " + font.family();
+        rdebug(debugInfo,RN_DBG,__FILE__);
     }
     // Else --> Do Nothing
     else
     {
-        qDebug() << "Nothing was Done";
+        rdebug("Nothing was Done",RN_DBG,__FILE__);
     }
 }

@@ -70,9 +70,22 @@ CMakeFiles/rnote.dir/rnote_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rnote.dir/rnote_autogen/mocs_compilation.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/rnote_autogen/mocs_compilation.cpp -o CMakeFiles/rnote.dir/rnote_autogen/mocs_compilation.cpp.s
 
+CMakeFiles/rnote.dir/src/keydown.cpp.o: CMakeFiles/rnote.dir/flags.make
+CMakeFiles/rnote.dir/src/keydown.cpp.o: ../../src/keydown.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rnote.dir/src/keydown.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rnote.dir/src/keydown.cpp.o -c /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/keydown.cpp
+
+CMakeFiles/rnote.dir/src/keydown.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rnote.dir/src/keydown.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/keydown.cpp > CMakeFiles/rnote.dir/src/keydown.cpp.i
+
+CMakeFiles/rnote.dir/src/keydown.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rnote.dir/src/keydown.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/keydown.cpp -o CMakeFiles/rnote.dir/src/keydown.cpp.s
+
 CMakeFiles/rnote.dir/src/main.cpp.o: CMakeFiles/rnote.dir/flags.make
 CMakeFiles/rnote.dir/src/main.cpp.o: ../../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rnote.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rnote.dir/src/main.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rnote.dir/src/main.cpp.o -c /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/main.cpp
 
 CMakeFiles/rnote.dir/src/main.cpp.i: cmake_force
@@ -85,7 +98,7 @@ CMakeFiles/rnote.dir/src/main.cpp.s: cmake_force
 
 CMakeFiles/rnote.dir/src/rwindow.cpp.o: CMakeFiles/rnote.dir/flags.make
 CMakeFiles/rnote.dir/src/rwindow.cpp.o: ../../src/rwindow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rnote.dir/src/rwindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rnote.dir/src/rwindow.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rnote.dir/src/rwindow.cpp.o -c /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/rwindow.cpp
 
 CMakeFiles/rnote.dir/src/rwindow.cpp.i: cmake_force
@@ -98,7 +111,7 @@ CMakeFiles/rnote.dir/src/rwindow.cpp.s: cmake_force
 
 CMakeFiles/rnote.dir/src/tab.cpp.o: CMakeFiles/rnote.dir/flags.make
 CMakeFiles/rnote.dir/src/tab.cpp.o: ../../src/tab.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rnote.dir/src/tab.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rnote.dir/src/tab.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rnote.dir/src/tab.cpp.o -c /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/tab.cpp
 
 CMakeFiles/rnote.dir/src/tab.cpp.i: cmake_force
@@ -112,6 +125,7 @@ CMakeFiles/rnote.dir/src/tab.cpp.s: cmake_force
 # Object files for target rnote
 rnote_OBJECTS = \
 "CMakeFiles/rnote.dir/rnote_autogen/mocs_compilation.cpp.o" \
+"CMakeFiles/rnote.dir/src/keydown.cpp.o" \
 "CMakeFiles/rnote.dir/src/main.cpp.o" \
 "CMakeFiles/rnote.dir/src/rwindow.cpp.o" \
 "CMakeFiles/rnote.dir/src/tab.cpp.o"
@@ -120,6 +134,7 @@ rnote_OBJECTS = \
 rnote_EXTERNAL_OBJECTS =
 
 rnote: CMakeFiles/rnote.dir/rnote_autogen/mocs_compilation.cpp.o
+rnote: CMakeFiles/rnote.dir/src/keydown.cpp.o
 rnote: CMakeFiles/rnote.dir/src/main.cpp.o
 rnote: CMakeFiles/rnote.dir/src/rwindow.cpp.o
 rnote: CMakeFiles/rnote.dir/src/tab.cpp.o
@@ -128,7 +143,7 @@ rnote: /home/rushikesh/Qt/5.9.9/gcc_64/lib/libQt5Widgets.so.5.9.9
 rnote: /home/rushikesh/Qt/5.9.9/gcc_64/lib/libQt5Gui.so.5.9.9
 rnote: /home/rushikesh/Qt/5.9.9/gcc_64/lib/libQt5Core.so.5.9.9
 rnote: CMakeFiles/rnote.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable rnote"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable rnote"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rnote.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

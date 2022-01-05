@@ -28,7 +28,7 @@ private slots:
     void on_actionExit_triggered();
     void on_actionSupport_triggered();
 
-    //
+    // Tab Events
     void on_tabWidget_Note_tabCloseRequested(int index);
     void on_tabWidget_Note_tabBarClicked(int index);
 
@@ -45,6 +45,9 @@ private:
     int TabCount = 0;
     // for storing file paths
     QString tabStack[20];
+    // File Operations
+    void OpenFile();
+    void WriteFile(QString);
 };
 
 #endif // RWINDOW_H

@@ -404,7 +404,6 @@ CMakeFiles/rnote.dir/src/rwindow.cpp.o
  rnote_autogen/include/ui_rwindow.h
 CMakeFiles/rnote.dir/src/tab.cpp.o
  ../../headers/tab.h
- /home/rushikesh/Qt/5.9.9/gcc_64/include/QtCore/QDebug
  /home/rushikesh/Qt/5.9.9/gcc_64/include/QtCore/QVariant
  /home/rushikesh/Qt/5.9.9/gcc_64/include/QtCore/qabstractitemmodel.h
  /home/rushikesh/Qt/5.9.9/gcc_64/include/QtCore/qalgorithms.h

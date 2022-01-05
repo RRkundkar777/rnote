@@ -75,12 +75,12 @@ clean: CMakeFiles/rnote_autogen.dir/clean
 CMakeFiles/rnote.dir/all: CMakeFiles/rnote_autogen.dir/all
 	$(MAKE) -f CMakeFiles/rnote.dir/build.make CMakeFiles/rnote.dir/depend
 	$(MAKE) -f CMakeFiles/rnote.dir/build.make CMakeFiles/rnote.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=1,2,3,4,5 "Built target rnote"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target rnote"
 .PHONY : CMakeFiles/rnote.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rnote.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rnote.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles 0
 .PHONY : CMakeFiles/rnote.dir/rule
@@ -102,7 +102,7 @@ CMakeFiles/rnote.dir/clean:
 CMakeFiles/rnote_autogen.dir/all:
 	$(MAKE) -f CMakeFiles/rnote_autogen.dir/build.make CMakeFiles/rnote_autogen.dir/depend
 	$(MAKE) -f CMakeFiles/rnote_autogen.dir/build.make CMakeFiles/rnote_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=6 "Built target rnote_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/builds/build-debug-linux/CMakeFiles --progress-num=7 "Built target rnote_autogen"
 .PHONY : CMakeFiles/rnote_autogen.dir/all
 
 # Build rule for subdir invocation for target.

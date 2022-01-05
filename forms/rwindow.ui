@@ -64,7 +64,7 @@
      <x>0</x>
      <y>0</y>
      <width>1380</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -72,7 +72,6 @@
      <string>File</string>
     </property>
     <addaction name="actionNew"/>
-    <addaction name="actionNew_Window"/>
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
@@ -110,7 +109,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNew">
    <property name="text">
-    <string>New</string>
+    <string>New Tab</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>

@@ -1705,10 +1705,10 @@ rwindow.h
 /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/rwindow.h
 ui_rwindow.h
 /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/ui_rwindow.h
-tab.h
-/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/tab.h
 config.h
 /media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/config.h
+tab.h
+/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/tab.h
 
 rnote_autogen/include/ui_rwindow.h
 QtCore/QVariant

@@ -6,7 +6,11 @@
 #include<QString>
 #include<QDebug>
 
+// Debugging Macro
 #define RN_DBG true
+
+// Function to write debug statements
+void rdebug(QString,bool,QString);
 
 void rdebug(QString message,bool mode,QString file = "")
 {
@@ -16,6 +20,5 @@ void rdebug(QString message,bool mode,QString file = "")
     }
     return;
 }
-
 
 #endif // CONFIG_H
