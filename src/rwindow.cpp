@@ -13,11 +13,6 @@
 #include "config.h"
 #include"tab.h"
 
-// Aliasing for maintaining the semantics
-#define SavePlainTextFile() on_actionSave_triggered()
-#define OpenNewTab() on_actionNew_triggered()
-#define SaveAsF() on_actionSave_As_triggered()
-
 // ------------------------------- Member Functions of RWindow Class -------------------------------------//
 
 // Constructor of RWindow
@@ -172,26 +167,12 @@ void RWindow::on_actionOpen_triggered()
 // On Save --> Save the file
 void RWindow::on_actionSave_triggered()
 {
-    // Index of Current Tab and Current Tab Name
-    int index = ui->tabWidget_Note->currentIndex();
-    QString tabName = ui->tabWidget_Note->tabText(index);
-
     // To check if file is already saved
     bool FilePathExists = false;
     QString filePath = "";
-    int i = 0;
 
-    // Checking TabStack for file location
-    while(tabStack[i] != "")
-    {
-        if(tabStack[i].split("/").back() == tabName)
-        {
-            FilePathExists = true;
-            filePath = tabStack[i];
-            break;
-        }
-        i++;
-    }
+    // Check if file path exists
+    FilePathExists = findFilePath(&filePath);
 
     // If file exists --> save it without prompt
     if(FilePathExists)
@@ -206,49 +187,17 @@ void RWindow::on_actionSave_triggered()
     // Else Open a Save Prompt and Save the File
     else{
         // Saving the File using Save File Prompt
-        SaveAsF();
+        SaveAs();
     }
 }
 
 // On Save As --> Open a save prompt and Save the file
 void RWindow::on_actionSave_As_triggered()
 {
-    // Opening a file Save prompt
-    // And saving file location as a string
-    QString file_dir = QFileDialog::getSaveFileName(this,"Save As",QDir::homePath());
-    int index = ui->tabWidget_Note->currentIndex();
-
-    // Write file to a location
-    WriteFile(file_dir);
-
-    // Setting the Path inside tabStack
-    int tabCount = 0;
-    while(1)
-    {
-        if(tabStack[tabCount] == "" )
-        {
-            tabStack[tabCount] = file_dir;
-            break;
-        }
-        tabCount++;
-    }
-
-    // Set the Tab name from filename
-    QString newTabName = file_dir.split("/").back();
-    if(newTabName != ""){
-        // Setting TabText and Window Title
-        ui->tabWidget_Note->setTabText(index,newTabName);
-
-        QString newWindowTitle = newTabName + " - RNote";
-        this->setWindowTitle(newWindowTitle);
-
-        // Debugging
-        QString debugInfo = QString("WindowTitle is " + newWindowTitle);
-        rdebug(debugInfo,RN_DBG,__FILE__);
-    }
+    SaveAs();
 }
 
-// On Tab Exit --> Prompt a Save Prompt
+// On Tab Exit --> Prompt to Save
 void RWindow::on_tabWidget_Note_tabCloseRequested(int index)
 {
     // The Close Tab Prompt
@@ -269,8 +218,21 @@ void RWindow::on_tabWidget_Note_tabCloseRequested(int index)
 
     // If user clicks Save --> Save the File
     if(userResponse == 0){
-        SavePlainTextFile();
+        // To check if file is already saved
+        bool FilePathExists = false;
+        QString filePath = "";
+        FilePathExists = findFilePath(&filePath);
+        if(FilePathExists)
+        {
+            WriteFile(filePath);
+            QMessageBox::information(this,"Save","File Saved");
+        }
+        else{
+            SaveAs();
+        }
+        // Remove the Tab
         ui->tabWidget_Note->removeTab(index);
+        TabCount--;
         return;
     }
 
@@ -282,6 +244,7 @@ void RWindow::on_tabWidget_Note_tabCloseRequested(int index)
         {
             // Removing the Tab
             ui->tabWidget_Note->removeTab(index);
+            TabCount--;
             // Current Index and TabText
             int CurrentIndex = ui->tabWidget_Note->currentIndex();
             QString newWindowName = ui->tabWidget_Note->tabText(CurrentIndex);
@@ -320,36 +283,6 @@ void RWindow::on_tabWidget_Note_tabBarClicked(int index)
     QString newWindowTitle = newTabName + " - RNote";
     this->setWindowTitle(newWindowTitle);
 }
-
-
-// On Exit clicked --> Turn off notepad
-void RWindow::on_actionExit_triggered()
-{
-       // The MessageBox Texts
-       QString warning_title = "Exit RNote";
-       QString warning_text = "Multiple Tabs are Opened\n If you close all tabs, you might lose data\n";
-
-       // The MessageBox Object
-       QMessageBox exitPrompt;
-
-       // Setting the MessageBox title and content
-       exitPrompt.setWindowTitle(warning_title);
-       exitPrompt.setText(warning_text);
-
-       // Adding the Buttons with text and events
-       exitPrompt.addButton("Save Tabs",QMessageBox::YesRole);
-       exitPrompt.addButton("Close All",QMessageBox::NoRole);
-       exitPrompt.addButton(QMessageBox::Cancel);
-
-
-       // Executing the Message Box and Storing the reply in 'reply variable'
-       int reply;
-       reply = exitPrompt.exec();
-
-       // Debugging
-       rdebug(QString("OnExitCode: ") + QString(reply),RN_DBG,__FILE__);
-}
-
 
 // On Support Clicked --> Open Site
 void RWindow::on_actionSupport_triggered()
@@ -475,4 +408,74 @@ void RWindow::WriteFile(QString fileLocation)
         // Flushing and Closing the file
         SaveFile.flush();
         SaveFile.close();
+}
+
+void RWindow::SaveAs()
+{
+    // Opening a file Save prompt
+    // And saving file location as a string
+    QString file_dir = QFileDialog::getSaveFileName(this,"Save As",QDir::homePath());
+    int index = ui->tabWidget_Note->currentIndex();
+
+    // Write file to a location
+    WriteFile(file_dir);
+
+    // Setting the Path inside tabStack
+    int tabCount = 0;
+    while(1)
+    {
+        if(tabStack[tabCount] == "" )
+        {
+            tabStack[tabCount] = file_dir;
+            break;
+        }
+        tabCount++;
+    }
+
+    // Set the Tab name from filename
+    QString newTabName = file_dir.split("/").back();
+    if(newTabName != ""){
+        // Setting TabText and Window Title
+        ui->tabWidget_Note->setTabText(index,newTabName);
+
+        QString newWindowTitle = newTabName + " - RNote";
+        this->setWindowTitle(newWindowTitle);
+
+        // Debugging
+        QString debugInfo = QString("WindowTitle is " + newWindowTitle);
+        rdebug(debugInfo,RN_DBG,__FILE__);
+    }
+}
+
+// Checking for existing file location
+bool RWindow::findFilePath(QString* Location)
+{
+    // Index of Current Tab and Current Tab Name
+    int index = ui->tabWidget_Note->currentIndex();
+    QString tabName = ui->tabWidget_Note->tabText(index);
+
+    // To check if file is already saved
+    bool FilePathExists = false;
+    QString filePath = "";
+    int i = 0;
+
+    // Checking TabStack for file location
+    while(tabStack[i] != "")
+    {
+        if(tabStack[i].split("/").back() == tabName)
+        {
+            FilePathExists = true;
+            filePath = tabStack[i];
+            break;
+        }
+        i++;
+    }
+    *Location = filePath;
+    return FilePathExists;
+}
+
+// Getting private QAction
+QAction *RWindow::getExitAction()
+{
+    return ui->actionExit;
 }

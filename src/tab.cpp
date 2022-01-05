@@ -5,6 +5,7 @@
 // Tab Class
 #include "tab.h"
 #include "ui_tab.h"
+#include "keydown.h"
 
 // Declaring rdebug() and RN_DBG
 void rdebug(QString,bool,QString);

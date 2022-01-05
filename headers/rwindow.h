@@ -16,6 +16,7 @@ class RWindow : public QMainWindow
 
 public:
     RWindow(QWidget *parent = nullptr);
+    QAction* getExitAction();
     ~RWindow();
 
     // Event Handling Mechanism
@@ -25,7 +26,6 @@ private slots:
     void on_actionOpen_triggered();
     void on_actionSave_triggered();
     void on_actionSave_As_triggered();
-    void on_actionExit_triggered();
     void on_actionSupport_triggered();
 
     // Tab Events
@@ -46,8 +46,9 @@ private:
     // for storing file paths
     QString tabStack[20];
     // File Operations
-    void OpenFile();
+    bool findFilePath(QString*);
     void WriteFile(QString);
+    void SaveAs();
 };
 
 #endif // RWINDOW_H
