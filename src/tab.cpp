@@ -11,7 +11,15 @@
 void rdebug(QString,bool,QString);
 #define RN_DBG true
 
-// ------------------------------- Member Functions of RWindow Class -------------------------------------//
+// Editor Themes
+QString Tab::MonokaiBg = "#555555";
+QString Tab::LightBg = "#ffffff";
+QString Tab::DarkBg = "#000000";
+QString Tab::Monokai = "background-color: #555555;color: #ffff00;border-color:#555555";
+QString Tab::Light = "background-color: #ffffff;color: black;";
+QString Tab::Dark =  "background-color: black;color: white;";
+
+// ------------------------------- Member Functions of Tab Class -------------------------------------//
 // Constructor of Tab
 Tab::Tab(QWidget *parent) :
     QWidget(parent),
@@ -58,6 +66,12 @@ void Tab::setLightTheme(){
 // Function to set monokai theme on Plain Text Edit
 void Tab::setMonokaiTheme(){
     ui->plainTextEdit->setStyleSheet("background-color: #555555;color: #ffff00;border-color:#555555");
+}
+
+// Function to set editor theme
+void Tab::setEditorTheme(QString Theme)
+{
+    ui->plainTextEdit->setStyleSheet(Theme);
 }
 
 // Function to set a new Font to PlainTextEdit

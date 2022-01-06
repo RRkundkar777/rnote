@@ -26,9 +26,15 @@ public:
     void setDarkTheme();
     void setLightTheme();
     void setMonokaiTheme();
+    void setEditorTheme(QString);
 
     // Setting fonts
     void setPlainTextFont();
+
+    // Editor Themes
+    static QString Monokai, MonokaiBg;
+    static QString Light, LightBg;
+    static QString Dark, DarkBg;
 
 private:
     Ui::Tab *ui;

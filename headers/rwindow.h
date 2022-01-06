@@ -26,7 +26,10 @@ private slots:
     void on_actionOpen_triggered();
     void on_actionSave_triggered();
     void on_actionSave_As_triggered();
+
+    // Additional Notepad Events
     void on_actionSupport_triggered();
+    void on_actionAbout_triggered();
 
     // Tab Events
     void on_tabWidget_Note_tabCloseRequested(int index);
@@ -37,6 +40,8 @@ private slots:
     void on_actionDark_triggered();
     void on_actionLight_triggered();
     void on_actionMonokai_triggered();
+
+    void on_actionSend_Feedback_triggered();
 
 private:
     Ui::RWindow *ui;
@@ -49,6 +54,8 @@ private:
     bool findFilePath(QString*);
     void WriteFile(QString);
     void SaveAs();
+    // Theme Operations
+    void setTheme(QString);
 };
 
 #endif // RWINDOW_H

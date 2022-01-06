@@ -9,6 +9,7 @@
 
 int main(int argc, char *argv[])
 {
+    // Instance of app and window
     QApplication rnote_qt(argc, argv);
     RWindow mainwindow;
 
@@ -16,6 +17,10 @@ int main(int argc, char *argv[])
     QAction* exitAction = mainwindow.getExitAction();
     QAction::connect(exitAction,SIGNAL(triggered()),qApp,SLOT(quit()));
 
+    // Setting main window Icon
+    mainwindow.setWindowIcon(QIcon(":/icons/icon1.ico"));
+
+    // Executing the app
     mainwindow.show();
     return rnote_qt.exec();
 }

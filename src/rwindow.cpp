@@ -287,93 +287,72 @@ void RWindow::on_tabWidget_Note_tabBarClicked(int index)
 // On Support Clicked --> Open Site
 void RWindow::on_actionSupport_triggered()
 {
-    QString link = "https://github.com/RRkundkar777/RNote";
+    QString link = "https://github.com/RRkundkar777/RNote/blob/master/docs/about.md";
+    QDesktopServices::openUrl(QUrl(link));
+}
+
+void RWindow::on_actionAbout_triggered()
+{
+    QString link = "https://github.com/RRkundkar777/RNote/";
+    QDesktopServices::openUrl(QUrl(link));
+}
+
+void RWindow::on_actionSend_Feedback_triggered()
+{
+    QString link = "mailto:r4002001005025k@gmail.com";
     QDesktopServices::openUrl(QUrl(link));
 }
 
 //--------------------------------------- Editor Apperance --------------------------------------------//
 
-// On dark option chosen --> Set the editor theme to dark
+// Set theme Dark
 void RWindow::on_actionDark_triggered()
 {
-    // Current Index
+    // Selecting current Tab
     int index = ui->tabWidget_Note->currentIndex();
-
-    // Pointer to Tab Class
     QWidget *widget = ui->tabWidget_Note->widget(index);
-
-    //Typecasting default QWidget Pointer to Tab Pointer
     Tab* tabPtr = (Tab*) widget;
 
-    // Setting the dark theme to plain Text Widget
-    tabPtr->setDarkTheme();
-
-    // Setting the theme on Window
-    QPalette pallet = this->palette();
-    QColor WindowColor = QColor::fromRgb(0,0,0);
-    QColor TextColor = QColor::fromRgb(255,255,255);
-    pallet.setColor(QPalette::Window,WindowColor);
-    pallet.setColor(QPalette::Text,TextColor);
-    this->setPalette(pallet);
+    // Setting the dark theme to plain Text Widget and Window
+    tabPtr->setEditorTheme(Tab::Dark);
+    this->setTheme(Tab::DarkBg);
 }
 
-// On light option chosen --> Set the editor theme to light
+// Set theme Light
 void RWindow::on_actionLight_triggered()
 {
-    // Current Index
+    // Selecting current Tab
     int index = ui->tabWidget_Note->currentIndex();
-
-    // Pointer to Tab Class
     QWidget *widget = ui->tabWidget_Note->widget(index);
-
-    //Typecasting default QWidget Pointer to Tab Pointer
     Tab* tabPtr = (Tab*) widget;
 
     // Setting the theme
-    tabPtr->setLightTheme();
-
-    // Setting the theme on Window
-    QPalette pallet = this->palette();
-    QColor WindowColor = QColor::fromRgb(255,255,255);
-    QColor TextColor = QColor::fromRgb(0,0,0);
-    pallet.setColor(QPalette::Window,WindowColor);
-    pallet.setColor(QPalette::Text,TextColor);
-    this->setPalette(pallet);
+    tabPtr->setEditorTheme(Tab::Light);
+    this->setTheme(Tab::LightBg);
 }
 
-// On cobalt option chosen --> Set the editor theme to cobalt
+// Set theme Monokai
 void RWindow::on_actionMonokai_triggered()
 {
-    // Current Index
+    // Selecting current Tab
     int index = ui->tabWidget_Note->currentIndex();
-
-    // Pointer to Tab Class
     QWidget *widget = ui->tabWidget_Note->widget(index);
-
-    //Typecasting default QWidget Pointer to Tab Pointer
     Tab* tabPtr = (Tab*) widget;
 
     // Setting the theme
-    tabPtr->setMonokaiTheme();
-
-    // Setting the theme on Window
-    QPalette pallet = this->palette();
-    QColor WindowColor = QColor::fromRgb(85,85,85);
-    QColor TextColor = QColor::fromRgb(255,255,0);
-    pallet.setColor(QPalette::Window,WindowColor);
-    pallet.setColor(QPalette::Text,TextColor);
-    this->setPalette(pallet);
+    tabPtr->setEditorTheme(Tab::Monokai);
+    this->setTheme(Tab::MonokaiBg);
 }
 
 void RWindow::on_actionFont_triggered()
 {
-    // Current Index
+    // Current Tab Index
     int index = ui->tabWidget_Note->currentIndex();
 
     // Pointer to Tab Class
     QWidget *widget = ui->tabWidget_Note->widget(index);
 
-    //Typecasting default QWidget Pointer to Tab Pointer
+    // Typecasting default QWidget Pointer to Tab Pointer
     Tab* tabPtr = (Tab*) widget;
 
     // Setting the new Font
@@ -478,4 +457,14 @@ bool RWindow::findFilePath(QString* Location)
 QAction *RWindow::getExitAction()
 {
     return ui->actionExit;
+}
+
+// Function to set window theme
+void RWindow::setTheme(QString theme)
+{
+    // Setting the theme on Window
+    QPalette pallet = this->palette();
+    QColor WindowColor = QColor(theme);
+    pallet.setColor(QPalette::Window,WindowColor);
+    this->setPalette(pallet);
 }
