@@ -38,7 +38,7 @@ public:
     QAction *actionSend_Feedback;
     QAction *actionTestCode;
     QAction *actionLight;
-    QAction *actionDark;
+    QAction *actionPeach;
     QAction *actionFont;
     QAction *actionMonokai;
     QWidget *centralwidget;
@@ -80,8 +80,8 @@ public:
         actionTestCode->setObjectName(QStringLiteral("actionTestCode"));
         actionLight = new QAction(RWindow);
         actionLight->setObjectName(QStringLiteral("actionLight"));
-        actionDark = new QAction(RWindow);
-        actionDark->setObjectName(QStringLiteral("actionDark"));
+        actionPeach = new QAction(RWindow);
+        actionPeach->setObjectName(QStringLiteral("actionPeach"));
         actionFont = new QAction(RWindow);
         actionFont->setObjectName(QStringLiteral("actionFont"));
         actionMonokai = new QAction(RWindow);
@@ -141,7 +141,7 @@ public:
         menuEdit->addAction(actionFont);
         menuEdit->addAction(menuTheme->menuAction());
         menuTheme->addAction(actionLight);
-        menuTheme->addAction(actionDark);
+        menuTheme->addAction(actionPeach);
         menuTheme->addAction(actionMonokai);
 
         retranslateUi(RWindow);
@@ -181,7 +181,10 @@ public:
         actionSend_Feedback->setText(QApplication::translate("RWindow", "Send Feedback", Q_NULLPTR));
         actionTestCode->setText(QApplication::translate("RWindow", "TestCode", Q_NULLPTR));
         actionLight->setText(QApplication::translate("RWindow", "Theme Light", Q_NULLPTR));
-        actionDark->setText(QApplication::translate("RWindow", "Absolute Dark", Q_NULLPTR));
+        actionPeach->setText(QApplication::translate("RWindow", "Peach", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        actionPeach->setToolTip(QApplication::translate("RWindow", "Peach", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         actionFont->setText(QApplication::translate("RWindow", "Font ...", Q_NULLPTR));
         actionMonokai->setText(QApplication::translate("RWindow", "Monokai", Q_NULLPTR));
         tabWidget_Note->setTabText(tabWidget_Note->indexOf(RBaseTab), QApplication::translate("RWindow", "New Page", Q_NULLPTR));

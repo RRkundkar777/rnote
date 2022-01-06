@@ -22,10 +22,7 @@ public:
     static QString getPlainTextData(Tab*);
     static void setPlainTextData(Tab*, QString);
 
-    // Setting editor themes
-    void setDarkTheme();
-    void setLightTheme();
-    void setMonokaiTheme();
+    // Setting editor theme
     void setEditorTheme(QString);
 
     // Setting fonts
@@ -34,7 +31,7 @@ public:
     // Editor Themes
     static QString Monokai, MonokaiBg;
     static QString Light, LightBg;
-    static QString Dark, DarkBg;
+    static QString Peach, PeachBg;
 
 private:
     Ui::Tab *ui;

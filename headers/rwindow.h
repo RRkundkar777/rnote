@@ -30,6 +30,7 @@ private slots:
     // Additional Notepad Events
     void on_actionSupport_triggered();
     void on_actionAbout_triggered();
+    void on_actionSend_Feedback_triggered();
 
     // Tab Events
     void on_tabWidget_Note_tabCloseRequested(int index);
@@ -37,11 +38,9 @@ private slots:
 
     // Basic editor design events
     void on_actionFont_triggered();
-    void on_actionDark_triggered();
     void on_actionLight_triggered();
+    void on_actionPeach_triggered();
     void on_actionMonokai_triggered();
-
-    void on_actionSend_Feedback_triggered();
 
 private:
     Ui::RWindow *ui;

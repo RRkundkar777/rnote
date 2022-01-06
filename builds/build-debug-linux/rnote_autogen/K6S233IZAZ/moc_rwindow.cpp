@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_RWindow_t {
     QByteArrayData data[16];
-    char stringdata0[366];
+    char stringdata0[367];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,14 +39,14 @@ QT_MOC_LITERAL(4, 56, 23), // "on_actionSave_triggered"
 QT_MOC_LITERAL(5, 80, 26), // "on_actionSave_As_triggered"
 QT_MOC_LITERAL(6, 107, 26), // "on_actionSupport_triggered"
 QT_MOC_LITERAL(7, 134, 24), // "on_actionAbout_triggered"
-QT_MOC_LITERAL(8, 159, 35), // "on_tabWidget_Note_tabCloseReq..."
-QT_MOC_LITERAL(9, 195, 5), // "index"
-QT_MOC_LITERAL(10, 201, 31), // "on_tabWidget_Note_tabBarClicked"
-QT_MOC_LITERAL(11, 233, 23), // "on_actionFont_triggered"
-QT_MOC_LITERAL(12, 257, 23), // "on_actionDark_triggered"
-QT_MOC_LITERAL(13, 281, 24), // "on_actionLight_triggered"
-QT_MOC_LITERAL(14, 306, 26), // "on_actionMonokai_triggered"
-QT_MOC_LITERAL(15, 333, 32) // "on_actionSend_Feedback_triggered"
+QT_MOC_LITERAL(8, 159, 32), // "on_actionSend_Feedback_triggered"
+QT_MOC_LITERAL(9, 192, 35), // "on_tabWidget_Note_tabCloseReq..."
+QT_MOC_LITERAL(10, 228, 5), // "index"
+QT_MOC_LITERAL(11, 234, 31), // "on_tabWidget_Note_tabBarClicked"
+QT_MOC_LITERAL(12, 266, 23), // "on_actionFont_triggered"
+QT_MOC_LITERAL(13, 290, 24), // "on_actionLight_triggered"
+QT_MOC_LITERAL(14, 315, 24), // "on_actionPeach_triggered"
+QT_MOC_LITERAL(15, 340, 26) // "on_actionMonokai_triggered"
 
     },
     "RWindow\0on_actionNew_triggered\0\0"
@@ -54,12 +54,13 @@ QT_MOC_LITERAL(15, 333, 32) // "on_actionSend_Feedback_triggered"
     "on_actionSave_As_triggered\0"
     "on_actionSupport_triggered\0"
     "on_actionAbout_triggered\0"
+    "on_actionSend_Feedback_triggered\0"
     "on_tabWidget_Note_tabCloseRequested\0"
     "index\0on_tabWidget_Note_tabBarClicked\0"
-    "on_actionFont_triggered\0on_actionDark_triggered\0"
+    "on_actionFont_triggered\0"
     "on_actionLight_triggered\0"
-    "on_actionMonokai_triggered\0"
-    "on_actionSend_Feedback_triggered"
+    "on_actionPeach_triggered\0"
+    "on_actionMonokai_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -83,9 +84,9 @@ static const uint qt_meta_data_RWindow[] = {
        5,    0,   82,    2, 0x08 /* Private */,
        6,    0,   83,    2, 0x08 /* Private */,
        7,    0,   84,    2, 0x08 /* Private */,
-       8,    1,   85,    2, 0x08 /* Private */,
-      10,    1,   88,    2, 0x08 /* Private */,
-      11,    0,   91,    2, 0x08 /* Private */,
+       8,    0,   85,    2, 0x08 /* Private */,
+       9,    1,   86,    2, 0x08 /* Private */,
+      11,    1,   89,    2, 0x08 /* Private */,
       12,    0,   92,    2, 0x08 /* Private */,
       13,    0,   93,    2, 0x08 /* Private */,
       14,    0,   94,    2, 0x08 /* Private */,
@@ -98,9 +99,9 @@ static const uint qt_meta_data_RWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    9,
-    QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int,   10,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -121,13 +122,13 @@ void RWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 3: _t->on_actionSave_As_triggered(); break;
         case 4: _t->on_actionSupport_triggered(); break;
         case 5: _t->on_actionAbout_triggered(); break;
-        case 6: _t->on_tabWidget_Note_tabCloseRequested((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 7: _t->on_tabWidget_Note_tabBarClicked((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 8: _t->on_actionFont_triggered(); break;
-        case 9: _t->on_actionDark_triggered(); break;
+        case 6: _t->on_actionSend_Feedback_triggered(); break;
+        case 7: _t->on_tabWidget_Note_tabCloseRequested((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->on_tabWidget_Note_tabBarClicked((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: _t->on_actionFont_triggered(); break;
         case 10: _t->on_actionLight_triggered(); break;
-        case 11: _t->on_actionMonokai_triggered(); break;
-        case 12: _t->on_actionSend_Feedback_triggered(); break;
+        case 11: _t->on_actionPeach_triggered(); break;
+        case 12: _t->on_actionMonokai_triggered(); break;
         default: ;
         }
     }

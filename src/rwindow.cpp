@@ -305,17 +305,17 @@ void RWindow::on_actionSend_Feedback_triggered()
 
 //--------------------------------------- Editor Apperance --------------------------------------------//
 
-// Set theme Dark
-void RWindow::on_actionDark_triggered()
+// Set theme Peach
+void RWindow::on_actionPeach_triggered()
 {
     // Selecting current Tab
     int index = ui->tabWidget_Note->currentIndex();
     QWidget *widget = ui->tabWidget_Note->widget(index);
     Tab* tabPtr = (Tab*) widget;
 
-    // Setting the dark theme to plain Text Widget and Window
-    tabPtr->setEditorTheme(Tab::Dark);
-    this->setTheme(Tab::DarkBg);
+    // Setting the Peach theme to plain Text Widget and Window
+    tabPtr->setEditorTheme(Tab::Peach);
+    this->setTheme(Tab::PeachBg);
 }
 
 // Set theme Light

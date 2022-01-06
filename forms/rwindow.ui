@@ -96,7 +96,7 @@
       <string>Editor Theme</string>
      </property>
      <addaction name="actionLight"/>
-     <addaction name="actionDark"/>
+     <addaction name="actionPeach"/>
      <addaction name="actionMonokai"/>
     </widget>
     <addaction name="actionFont"/>
@@ -177,9 +177,12 @@
     <string>Theme Light</string>
    </property>
   </action>
-  <action name="actionDark">
+  <action name="actionPeach">
    <property name="text">
-    <string>Absolute Dark</string>
+    <string>Peach</string>
+   </property>
+   <property name="toolTip">
+    <string>Peach</string>
    </property>
   </action>
   <action name="actionFont">

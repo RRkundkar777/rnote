@@ -14,10 +14,10 @@ void rdebug(QString,bool,QString);
 // Editor Themes
 QString Tab::MonokaiBg = "#555555";
 QString Tab::LightBg = "#ffffff";
-QString Tab::DarkBg = "#000000";
+QString Tab::PeachBg = "#ffdaB9";
 QString Tab::Monokai = "background-color: #555555;color: #ffff00;border-color:#555555";
 QString Tab::Light = "background-color: #ffffff;color: black;";
-QString Tab::Dark =  "background-color: black;color: white;";
+QString Tab::Peach=  "background-color: #ffdaB9;color: black;";
 
 // ------------------------------- Member Functions of Tab Class -------------------------------------//
 // Constructor of Tab
@@ -50,22 +50,6 @@ QString Tab::getPlainTextData(Tab *tab){
 void Tab::setPlainTextData(Tab *tab,QString plainText){
     tab->ui->plainTextEdit->setPlainText(plainText);
     return;
-}
-
-// Function to set dark theme on Plain Text Edit
-void Tab::setDarkTheme()
-{
-    ui->plainTextEdit->setStyleSheet("background-color: black;color: white;");
-}
-
-// Function to set light theme on Plain Text Edit
-void Tab::setLightTheme(){
-    ui->plainTextEdit->setStyleSheet("background-color: #ffffff;color: black;");
-}
-
-// Function to set monokai theme on Plain Text Edit
-void Tab::setMonokaiTheme(){
-    ui->plainTextEdit->setStyleSheet("background-color: #555555;color: #ffff00;border-color:#555555");
 }
 
 // Function to set editor theme
