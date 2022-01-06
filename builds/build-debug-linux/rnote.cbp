@@ -145,6 +145,9 @@
 		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/headers/tab.h">
 			<Option target="rnote"/>
 		</Unit>
+		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/resources/registry.qrc">
+			<Option target="rnote"/>
+		</Unit>
 		<Unit filename="/media/rushikesh/MacOS/MTXOS/desktop-projects/rnote/src/keydown.cpp">
 			<Option target="rnote"/>
 		</Unit>

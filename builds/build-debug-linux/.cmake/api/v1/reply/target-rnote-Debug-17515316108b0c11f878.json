@@ -27,13 +27,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 70,
+				"line" : 73,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 81,
+				"line" : 84,
 				"parent" : 0
 			},
 			{
@@ -158,10 +158,10 @@
 			"sourceIndexes" : 
 			[
 				0,
-				7,
 				8,
 				9,
-				10
+				10,
+				11
 			]
 		}
 	],
@@ -219,10 +219,10 @@
 			"sourceIndexes" : 
 			[
 				0,
-				7,
 				8,
 				9,
-				10
+				10,
+				11
 			]
 		},
 		{
@@ -230,7 +230,8 @@
 			"sourceIndexes" : 
 			[
 				1,
-				2
+				2,
+				7
 			]
 		},
 		{
@@ -282,6 +283,11 @@
 			"backtrace" : 1,
 			"path" : "headers/tab.h",
 			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "resources/registry.qrc",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,

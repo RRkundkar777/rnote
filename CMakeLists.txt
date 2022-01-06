@@ -61,13 +61,16 @@ set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_AUTOUIC_SEARCH_PATHS} ${FORMS_DIR})
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_AUTOUIC_SEARCH_PATHS} ${RES_DIR})
 
+# Setting the App Icon
+set(APP_ICON_RESOURCE_WINDOWS "${RES_DIR}/registry.qrc")
+
 # Add the executable
 if (WIN32)
     # Exe without command line
-    add_executable(rnote WIN32 ${SOURCES})
+    add_executable(rnote WIN32 ${SOURCES} ${APP_ICON_RESOURCE_WINDOWS})
 elseif(UNIX)
     # Exe with command line
-    add_executable(rnote ${SOURCES})
+    add_executable(rnote ${SOURCES} ${APP_ICON_RESOURCE_WINDOWS})
 endif()
 
 # Add the target includes for rnote
