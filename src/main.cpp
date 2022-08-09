@@ -1,26 +1,23 @@
-// Starting Point of application
+// application start point
 
-// RWindow Class
-#include "rwindow.h"
-
-// QApplication for Running App
 #include <QApplication>
 #include<QAction>
+#include "rwindow.h"
 
 int main(int argc, char *argv[])
 {
-    // Instance of app and window
-    QApplication rnote_qt(argc, argv);
+    // instance of app and window
+    QApplication rnote(argc, argv);
     RWindow mainwindow;
 
-    // Connecting Exit Action to QApp close
+    // connecting exitaction to QApp close
     QAction* exitAction = mainwindow.getExitAction();
     QAction::connect(exitAction,SIGNAL(triggered()),qApp,SLOT(quit()));
 
-    // Setting main window Icon
+    // set main window icon
     mainwindow.setWindowIcon(QIcon(":/icons/icon1.ico"));
 
-    // Executing the app
+    // executing the app
     mainwindow.show();
-    return rnote_qt.exec();
+    return rnote.exec();
 }

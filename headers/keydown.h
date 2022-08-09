@@ -1,4 +1,4 @@
-// General Keydown event for any Widget
+// general keydown event for any widget
 
 #ifndef KEYDOWN_H
 #define KEYDOWN_H

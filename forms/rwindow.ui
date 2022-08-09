@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTabWidget" name="tabWidget_Note">
+     <widget class="QTabWidget" name="tab_menu">
       <property name="currentIndex">
        <number>1</number>
       </property>
@@ -64,7 +64,7 @@
      <x>0</x>
      <y>0</y>
      <width>1380</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -99,8 +99,17 @@
      <addaction name="actionPeach"/>
      <addaction name="actionMonokai"/>
     </widget>
+    <widget class="QMenu" name="menuIDE_Theme">
+     <property name="title">
+      <string>IDE Theme</string>
+     </property>
+     <addaction name="actionLight_2"/>
+     <addaction name="actionMonokai_2"/>
+     <addaction name="actionPeach_2"/>
+    </widget>
     <addaction name="actionFont"/>
     <addaction name="menuTheme"/>
+    <addaction name="menuIDE_Theme"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -193,6 +202,21 @@
   <action name="actionMonokai">
    <property name="text">
     <string>Monokai</string>
+   </property>
+  </action>
+  <action name="actionLight_2">
+   <property name="text">
+    <string>Light</string>
+   </property>
+  </action>
+  <action name="actionMonokai_2">
+   <property name="text">
+    <string>Monokai</string>
+   </property>
+  </action>
+  <action name="actionPeach_2">
+   <property name="text">
+    <string>Peach</string>
    </property>
   </action>
  </widget>

@@ -1,4 +1,4 @@
-// The Tab class of our notepad
+// The tab class of our notepad
 
 #ifndef TAB_H
 #define TAB_H
@@ -6,10 +6,10 @@
 #include <QWidget>
 
 namespace Ui {
-class Tab;
+    class Tab;
 }
 
-// Class Declaration
+// class declaration
 class Tab : public QWidget
 {
     Q_OBJECT
@@ -18,17 +18,15 @@ public:
     explicit Tab(QWidget *parent = nullptr);
     ~Tab();
 
-    // Getting and Setting Plain text data
+    // plain text
     static QString getPlainTextData(Tab*);
     static void setPlainTextData(Tab*, QString);
 
-    // Setting editor theme
+    // setting editor theme and font
     void setEditorTheme(QString);
-
-    // Setting fonts
     void setPlainTextFont();
 
-    // Editor Themes
+    // editor themes
     static QString Monokai, MonokaiBg;
     static QString Light, LightBg;
     static QString Peach, PeachBg;

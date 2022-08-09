@@ -1,4 +1,3 @@
-// Qt System Libraries
 #include<QDebug>
 #include<QMessageBox>
 #include<QString>
@@ -7,296 +6,229 @@
 #include<QUrl>
 #include<QDesktopServices>
 
-// RWindow and Tab Class
 #include "rwindow.h"
 #include "ui_rwindow.h"
-#include "config.h"
 #include"tab.h"
 
-// ------------------------------- Member Functions of RWindow Class -------------------------------------//
-
-// Constructor of RWindow
-RWindow::RWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::RWindow)
+RWindow::RWindow(QWidget *parent) : QMainWindow(parent) , ui(new Ui::RWindow)
 {
     ui->setupUi(this);
-    rdebug("RWindow Constructor Called",RN_DBG,__FILE__);
 
-    // Removal of Extra Tabs Supplied by Qt
-    ui->tabWidget_Note->removeTab(0);
-    ui->tabWidget_Note->removeTab(0);
-    rdebug("Removed Default Extra Tabs",RN_DBG,__FILE__);
+    // removing extra tabs
+    ui->tab_menu->removeTab(0);
+    ui->tab_menu->removeTab(0);
 
-    // Adding a Plain Text Editor Tab
-    ui->tabWidget_Note->addTab(new Tab(),QString("Untitled %0").arg(ui->tabWidget_Note->count()+1));
-    int index = ui->tabWidget_Note->currentIndex();
-    ui->tabWidget_Note->setCurrentIndex(ui->tabWidget_Note->count()-1);
+    // adding a plaintexteditor tab
+    ui->tab_menu->addTab(new Tab(),QString("Untitled %0").arg(ui->tab_menu->count()));
 
-    // Setting the New Window Title
-    QString newTabName = ui->tabWidget_Note->tabText(index);
-    QString newWindowTitle = newTabName + " - RNote";
-    this->setWindowTitle(newWindowTitle);
+    // setting the window title
+    int index = ui->tab_menu->currentIndex();
+    QString tabName = ui->tab_menu->tabText(index);
+    QString windowTitle = tabName + " - RNote";
+    this->setWindowTitle(windowTitle);
 
-    // Incrementing the TabCount
-    TabCount = 1;
-
-//    qDebug() << "Current Index is: " << ui->tabWidget_Note->currentIndex();
-
-    // Selecting the Default theme --> setting the current action
+    // selecting the default theme
     QAction *act = ui->actionLight;
     ui->menuTheme->setActiveAction(act);
     ui->menuTheme->activeAction()->setChecked(true);
-
-
-    // Debugging
-    QString plainTextAdded = QString("Added a Plain Text Tab (TabCount to One) Window Title is "
-                                     + newWindowTitle);
-    rdebug(plainTextAdded,RN_DBG,__FILE__);
-
 }
 
-// Destructor of RWindow
+// destructor
 RWindow::~RWindow()
 {
     delete ui;
-    rdebug("Exited Main Window",RN_DBG,__FILE__);
 }
 
-
-// On New --> Create a new tab
+// new tab
 void RWindow::on_actionNew_triggered()
 {
-    // Index and Tab Title
-//    int index = ui->tabWidget_Note->currentIndex();
-//    QString tabtext = ui->tabWidget_Note->tabText(index);
+    int newIndex = ui->tab_menu->count();
 
-    // Incrementing the TabCount and Setting the NewIndex
-    TabCount++;
-    int newIndex = TabCount - 1;
-
-    rdebug("TabCount Incremented",RN_DBG,__FILE__);
-    QString debugInfo = QString("NewIndex is ") + QString(newIndex);
-    rdebug(debugInfo,RN_DBG,__FILE__);
-
-    // Creating a New Tab and Setting the Current Index
+    // creating a newtab
     Tab *tab = new Tab();
-    ui->tabWidget_Note->addTab(tab,QString("Untitled %0").arg(TabCount));
-    ui->tabWidget_Note->setCurrentIndex(newIndex);
-
-    // Debugging
-    rdebug("New Tab Created by User",RN_DBG,__FILE__);
-    debugInfo = QString("Current Tab Number is ") + QString(ui->tabWidget_Note->currentIndex());
-    rdebug(debugInfo,RN_DBG,__FILE__);
+    ui->tab_menu->addTab(tab,QString("Untitled %0").arg(newIndex));
+    ui->tab_menu->setCurrentIndex(newIndex);
 }
 
-
-// On Open --> Open a file
+// open a file
 void RWindow::on_actionOpen_triggered()
 {
-    // Creating a New Tab and setting it as current tab
-    ui->tabWidget_Note->addTab(new Tab(),"Open Tab");
-    TabCount++;
-    ui->tabWidget_Note->setCurrentIndex(TabCount - 1);
-    int index = ui->tabWidget_Note->currentIndex();
+    // create a new current tab
+    ui->tab_menu->addTab(new Tab(),"temp");
+    ui->tab_menu->setCurrentIndex(ui->tab_menu->count() - 1);
+    int index = ui->tab_menu->currentIndex();
 
-    // Create a file object, and open it
+    // create a file object and open it
     QString file_dir = QFileDialog::getOpenFileName(this,"Open ",QDir::homePath());
     QFile OpenFile(file_dir);
     bool fileOpened = OpenFile.open(QFile::ReadOnly | QFile::Text);
 
-    // If file does not exists --> return the FileNotFound Error
+    // file does not exists
     if(!fileOpened)
     {
-        ui->tabWidget_Note->removeTab(index);
-        TabCount--;
-//        QMessageBox::warning(this,"Error 404","File Not Found");
-        rdebug("No File Selected",RN_DBG,__FILE__);
+        ui->tab_menu->removeTab(index);
         return;
     }
 
-    // Else output the file contents to plain text and rename the tab with fileName
+    // output file contents and rename file tab
     else{
 
-        // Pointer to Tab Class
-        QWidget *widget = ui->tabWidget_Note->widget(index);
+        QWidget *widget = ui->tab_menu->widget(index);
         Tab* tabPtr = (Tab*) widget;
 
-        // Getting the File contents in form of a String
+        // getting file contents in string
         QString text;
         text = OpenFile.readAll();
 
-        // Disply contents of the file
+        // displaying file contents
         Tab::setPlainTextData(tabPtr,text);
-
-        // Close the file
         OpenFile.close();
 
-        // Cache the Path inside tabStack
-        int pathCount = 0;
-        while(1)
+        // cache the filepath inside fileLocations
+        pathCount++;
+
+        if(pathCount < 25)
         {
-            if(tabStack[pathCount] == "" )
-            {
-                tabStack[pathCount] = file_dir;
-                break;
-            }
-            pathCount++;
+            fileLocations[pathCount] = file_dir;
         }
 
-        // Setting file name as Tab name
-        QString newTabName = file_dir.split("/").back();
-        if(newTabName != ""){
-            // Setting newTabName and newWindowTitle
-            ui->tabWidget_Note->setTabText(index,newTabName);
-            QString newWindowTitle = newTabName + " - RNote";
-            this->setWindowTitle(newWindowTitle);
-
-            // Debugging
-            QString debugInfo = QString("WindowTitle is " + newWindowTitle);
-            rdebug(debugInfo,RN_DBG,__FILE__);
+        // setting file name as Tab name
+        QString tabName = file_dir.split("/").back();
+        if(tabName != "")
+        {
+            // Setting tabName and windowTitle
+            ui->tab_menu->setTabText(index,tabName);
+            QString windowTitle = tabName + " - RNote";
+            this->setWindowTitle(windowTitle);
         }
-
-        // Debugging
-        QString debugInfo = QString("Opened file named " + newTabName);
-        rdebug(debugInfo,RN_DBG,__FILE__);
         return;
     }
 }
 
-// On Save --> Save the file
+// save file
 void RWindow::on_actionSave_triggered()
 {
-    // To check if file is already saved
-    bool FilePathExists = false;
+    // check if file is already present
+    bool filePathExists = false;
     QString filePath = "";
+    filePathExists = findFilePath(&filePath);
 
-    // Check if file path exists
-    FilePathExists = findFilePath(&filePath);
-
-    // If file exists --> save it without prompt
-    if(FilePathExists)
+    // run plain save
+    if(filePathExists)
     {
-        // Write Data to the file
-        WriteFile(filePath);
+        // write data to the file
+        writeFile(filePath);
 
         // Showing the Save Prompt
-        QMessageBox::information(this,"Save","File Saved");
+        QMessageBox::information(this,"Save","File Saved Successfully");
     }
-
-    // Else Open a Save Prompt and Save the File
+    // run save as
     else{
-        // Saving the File using Save File Prompt
-        SaveAs();
+        saveAs();
     }
 }
 
-// On Save As --> Open a save prompt and Save the file
+// save file as
 void RWindow::on_actionSave_As_triggered()
 {
-    SaveAs();
+    saveAs();
 }
 
-// On Tab Exit --> Prompt to Save
-void RWindow::on_tabWidget_Note_tabCloseRequested(int index)
+// close tab
+void RWindow::on_tab_menu_tabCloseRequested(int index)
 {
-    // The Close Tab Prompt
+    // exit prompt
     QMessageBox tabClosePrompt;
     QString tabCloseTitle = "RNote";
-    QString tabName = ui->tabWidget_Note->tabText(index);
+    QString tabName = ui->tab_menu->tabText(index);
     QString tabCloseText = "Do you want to Save Changes to "+tabName+"?\n Changes will be lost if not Saved";
-
-    // Setting Up the Close Tab Prompt
     tabClosePrompt.setWindowTitle(tabCloseTitle);
     tabClosePrompt.setText(tabCloseText);
     tabClosePrompt.addButton("Save",QMessageBox::YesRole);
     tabClosePrompt.addButton("Dont Save",QMessageBox::NoRole);
     tabClosePrompt.addButton(QMessageBox::Cancel);
 
-    // Storing the User Response (Without this, tabClosePrompt will not show up)
+    // user response
     int userResponse = tabClosePrompt.exec();
 
-    // If user clicks Save --> Save the File
+    // save response
     if(userResponse == 0){
-        // To check if file is already saved
-        bool FilePathExists = false;
+        // check if file exists
+        bool filePathExists = false;
         QString filePath = "";
-        FilePathExists = findFilePath(&filePath);
-        if(FilePathExists)
+        filePathExists = findFilePath(&filePath);
+        if(filePathExists)
         {
-            WriteFile(filePath);
+            writeFile(filePath);
             QMessageBox::information(this,"Save","File Saved");
         }
         else{
-            SaveAs();
+            saveAs();
         }
-        // Remove the Tab
-        ui->tabWidget_Note->removeTab(index);
-        TabCount--;
+        // remove the tab
+        ui->tab_menu->removeTab(index);
         return;
     }
 
-    // Else if User clicks dont save --> Close the Tab Without Saving
+    // dont save response
     else if(userResponse == 1)
     {
-        // If tab to be closed is current Tab --> Change WindowTitle
-        if(index == ui->tabWidget_Note->currentIndex())
+        // closing current tab
+        if(index == ui->tab_menu->currentIndex())
         {
-            // Removing the Tab
-            ui->tabWidget_Note->removeTab(index);
-            TabCount--;
-            // Current Index and TabText
-            int CurrentIndex = ui->tabWidget_Note->currentIndex();
-            QString newWindowName = ui->tabWidget_Note->tabText(CurrentIndex);
+            // removing current tab
+            ui->tab_menu->removeTab(index);
 
-            // If TabName is not null --> set NewWindowTitle
-            if(newWindowName != "")
+            // then current tab
+            int currentIndex = ui->tab_menu->currentIndex();
+            QString windowName = ui->tab_menu->tabText(currentIndex);
+
+            // setting tab name
+            if(windowName != "")
             {
-            this->setWindowTitle(newWindowName + " - RNote");
+                this->setWindowTitle(windowName + " - RNote");
             }
             else
             {
                 this->setWindowTitle("RNote");
             }
         }
+        // closing non current tab
         else
         {
-            ui->tabWidget_Note->removeTab(index);
+            ui->tab_menu->removeTab(index);
         }
     }
-
-    // Else if user clicks cancel --> do nothing
+    // cancel response
     else{
         return;
     }
-
-    // Debugging
-    rdebug("Action is ",RN_DBG,__FILE__);
 }
 
-
-// On Tab Clicked --> show the file name in Title Bar
-void RWindow::on_tabWidget_Note_tabBarClicked(int index)
+// when tab is clicked
+void RWindow::on_tab_menu_tabBarClicked(int index)
 {
-    // Setting the New Window Title
-    QString newTabName = ui->tabWidget_Note->tabText(index);
-    QString newWindowTitle = newTabName + " - RNote";
-    this->setWindowTitle(newWindowTitle);
+    // setting window title
+    QString tabName = ui->tab_menu->tabText(index);
+    QString windowTitle = tabName + " - RNote";
+    this->setWindowTitle(windowTitle);
 }
 
-// On Support Clicked --> Open Site
+// support action
 void RWindow::on_actionSupport_triggered()
 {
     QString link = "https://github.com/RRkundkar777/RNote/blob/master/docs/about.md";
     QDesktopServices::openUrl(QUrl(link));
 }
 
+// about action
 void RWindow::on_actionAbout_triggered()
 {
     QString link = "https://github.com/RRkundkar777/RNote/";
     QDesktopServices::openUrl(QUrl(link));
 }
 
+// feedback action
 void RWindow::on_actionSend_Feedback_triggered()
 {
     QString link = "mailto:r4002001005025k@gmail.com";
@@ -305,83 +237,71 @@ void RWindow::on_actionSend_Feedback_triggered()
 
 //--------------------------------------- Editor Apperance --------------------------------------------//
 
-// Set theme Peach
+// set theme peach
 void RWindow::on_actionPeach_triggered()
 {
-    // Selecting current Tab
-    int index = ui->tabWidget_Note->currentIndex();
-    QWidget *widget = ui->tabWidget_Note->widget(index);
-    Tab* tabPtr = (Tab*) widget;
-
-    // Setting the Peach theme to plain Text Widget and Window
-    tabPtr->setEditorTheme(Tab::Peach);
-    this->setTheme(Tab::PeachBg);
+    setEditorTheme(Tab::Peach);
 }
 
-// Set theme Light
+// set theme light
 void RWindow::on_actionLight_triggered()
 {
-    // Selecting current Tab
-    int index = ui->tabWidget_Note->currentIndex();
-    QWidget *widget = ui->tabWidget_Note->widget(index);
-    Tab* tabPtr = (Tab*) widget;
+    setEditorTheme(Tab::Light);
+}
 
-    // Setting the theme
-    tabPtr->setEditorTheme(Tab::Light);
+// set theme monokai
+void RWindow::on_actionMonokai_triggered()
+{
+    setEditorTheme(Tab::Monokai);
+}
+
+void RWindow::on_actionLight_2_triggered()
+{
     this->setTheme(Tab::LightBg);
 }
 
-// Set theme Monokai
-void RWindow::on_actionMonokai_triggered()
+void RWindow::on_actionMonokai_2_triggered()
 {
-    // Selecting current Tab
-    int index = ui->tabWidget_Note->currentIndex();
-    QWidget *widget = ui->tabWidget_Note->widget(index);
-    Tab* tabPtr = (Tab*) widget;
-
-    // Setting the theme
-    tabPtr->setEditorTheme(Tab::Monokai);
     this->setTheme(Tab::MonokaiBg);
 }
 
+void RWindow::on_actionPeach_2_triggered()
+{
+    this->setTheme(Tab::PeachBg);
+}
+
+// change current font
 void RWindow::on_actionFont_triggered()
 {
-    // Current Tab Index
-    int index = ui->tabWidget_Note->currentIndex();
-
-    // Pointer to Tab Class
-    QWidget *widget = ui->tabWidget_Note->widget(index);
-
-    // Typecasting default QWidget Pointer to Tab Pointer
+    int index = ui->tab_menu->currentIndex();
+    QWidget *widget = ui->tab_menu->widget(index);
     Tab* tabPtr = (Tab*) widget;
-
-    // Setting the new Font
     tabPtr->setPlainTextFont();
 }
 
 // -------------------------------------- File I.O -----------------------------------------//
-void RWindow::WriteFile(QString fileLocation)
+
+// write to file
+void RWindow::writeFile(QString fileLocation)
 {
-        // Creating a file Object using the file location
+        // file object using the file location
         QFile SaveFile(fileLocation);
 
-        // Using QTextStream to Save Text to file
+        // file output object linked to savefile
         QTextStream outputTo(&SaveFile);
 
-        // Opening the file
+        // opening file
         SaveFile.open(QFile::WriteOnly | QFile::Text);
 
-        // Pointer to Tab Class
-        int index = ui->tabWidget_Note->currentIndex();
-        QWidget *widget = ui->tabWidget_Note->widget(index);
-
-        //Typecasting default QWidget Pointer to Tab Pointer
+        // pointer to tab class
+        int index = ui->tab_menu->currentIndex();
+        QWidget *widget = ui->tab_menu->widget(index);
         Tab* tabPtr = (Tab*) widget;
 
-        // Calling the User-Defined function getPlainTextData and storing it in string
+        // getting plain text data
         QString text = Tab::getPlainTextData(tabPtr);
 
-        // Outputting the string to file object
+        // output the string to file object
         outputTo << text;
 
         // Flushing and Closing the file
@@ -389,82 +309,90 @@ void RWindow::WriteFile(QString fileLocation)
         SaveFile.close();
 }
 
-void RWindow::SaveAs()
+// save as
+void RWindow::saveAs()
 {
-    // Opening a file Save prompt
-    // And saving file location as a string
+    // file location and tab index
     QString file_dir = QFileDialog::getSaveFileName(this,"Save As",QDir::homePath());
-    int index = ui->tabWidget_Note->currentIndex();
+    int index = ui->tab_menu->currentIndex();
 
-    // Write file to a location
-    WriteFile(file_dir);
+    // write file to a location
+    writeFile(file_dir);
 
-    // Setting the Path inside tabStack
+    // caching the path into fileLocations
     int tabCount = 0;
     while(1)
     {
-        if(tabStack[tabCount] == "" )
+        if(fileLocations[tabCount] == "" )
         {
-            tabStack[tabCount] = file_dir;
+            fileLocations[tabCount] = file_dir;
             break;
         }
         tabCount++;
     }
 
-    // Set the Tab name from filename
-    QString newTabName = file_dir.split("/").back();
-    if(newTabName != ""){
-        // Setting TabText and Window Title
-        ui->tabWidget_Note->setTabText(index,newTabName);
-
-        QString newWindowTitle = newTabName + " - RNote";
-        this->setWindowTitle(newWindowTitle);
-
-        // Debugging
-        QString debugInfo = QString("WindowTitle is " + newWindowTitle);
-        rdebug(debugInfo,RN_DBG,__FILE__);
+    // setting tab name to filename
+    QString tabName = file_dir.split("/").back();
+    if(tabName != ""){
+        ui->tab_menu->setTabText(index,tabName);
+        QString windowTitle = tabName + " - RNote";
+        this->setWindowTitle(windowTitle);
     }
 }
 
-// Checking for existing file location
+// check for an existing file location
 bool RWindow::findFilePath(QString* Location)
 {
-    // Index of Current Tab and Current Tab Name
-    int index = ui->tabWidget_Note->currentIndex();
-    QString tabName = ui->tabWidget_Note->tabText(index);
+    // current tabname and index
+    int index = ui->tab_menu->currentIndex();
+    QString tabName = ui->tab_menu->tabText(index);
 
-    // To check if file is already saved
-    bool FilePathExists = false;
+    bool filePathExists = false;
     QString filePath = "";
     int i = 0;
 
-    // Checking TabStack for file location
-    while(tabStack[i] != "")
+    // checking the fileLocations for data
+    while(fileLocations[i] != "")
     {
-        if(tabStack[i].split("/").back() == tabName)
+        if(fileLocations[i].split("/").back() == tabName)
         {
-            FilePathExists = true;
-            filePath = tabStack[i];
+            filePathExists = true;
+            filePath = fileLocations[i];
             break;
         }
         i++;
     }
     *Location = filePath;
-    return FilePathExists;
+    return filePathExists;
 }
 
-// Getting private QAction
+// get private QAction
 QAction *RWindow::getExitAction()
 {
     return ui->actionExit;
 }
 
-// Function to set window theme
+// set ide theme
 void RWindow::setTheme(QString theme)
 {
-    // Setting the theme on Window
+    // setting the theme on window
     QPalette pallet = this->palette();
     QColor WindowColor = QColor(theme);
     pallet.setColor(QPalette::Window,WindowColor);
     this->setPalette(pallet);
+}
+
+// set tab theme
+void RWindow::setEditorTheme(QString theme)
+{
+    // current tab
+    int index = ui->tab_menu->currentIndex();
+    if(index == -1)
+        return;
+
+    QWidget *widget = ui->tab_menu->widget(index);
+    Tab* tabPtr = (Tab*) widget;
+
+    // setting the peach theme
+    tabPtr->setEditorTheme(theme);
 }
