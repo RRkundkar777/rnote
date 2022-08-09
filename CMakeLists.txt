@@ -3,6 +3,7 @@
 # CMake version
 cmake_minimum_required(VERSION 3.14)
 
+
 # Settings for both windows and Linux
 if (WIN32)
     project(rnote LANGUAGES CXX)
